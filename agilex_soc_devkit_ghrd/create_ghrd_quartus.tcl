@@ -169,7 +169,7 @@ if {$pr_enable == 1} {
 set_global_assignment -name STRATIX_JTAG_USER_CODE 3
 set_global_assignment -name USE_CHECKSUM_AS_USERCODE OFF
 } else {
-if {$board == "devkit_fm86" | $board == "devkit_fm87" | $board == "DK-SI-AGF014E" | $board == "devkit_fp82" && $daughter_card == "devkit_dc_oobe"} {
+if {$board == "devkit_fm86" | $board == "devkit_fm87" | $board == "DK-SI-AGF014E" | $board == "devkit_fp82" | $board == "DK-DEV-AGF023FA" && $daughter_card == "devkit_dc_oobe"} {
 set_global_assignment -name STRATIX_JTAG_USER_CODE 4
 set_global_assignment -name USE_CHECKSUM_AS_USERCODE OFF
 } elseif {$board == "DK-SI-AGF014E" && $daughter_card == "devkit_dc_nand"} {
@@ -226,16 +226,24 @@ if {[info exists pin_assignment_table]} {
         }
     }
 }
+# Default HBM enabled assignment
+if {$hbm_en == 1} {
+	set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|agilex_hps|intel_agilex_hps_inst|iniu_0|initiator_inst_0 -entity $top_name
+	set_location_assignment PIN_AP33 -to hbm_core_pll_refclk_clk
+	set_instance_assignment -name IO_STANDARD "1.2V TRUE DIFFERENTIAL SIGNALING" -to hbm_core_pll_refclk_clk -entity $top_name
+	set_location_assignment PIN_AR36 -to uibpll_refclk_clk
+	set_instance_assignment -name IO_STANDARD "1.2V TRUE DIFFERENTIAL SIGNALING" -to uibpll_refclk_clk -entity $top_name
+	set_location_assignment PIN_E38 -to hbm_only_reset_reset
+	set_instance_assignment -name IO_STANDARD "1.2-V" -to hbm_only_reset_reset
+}
 
 if {$hps_emif_en == 1} {
 source ./pin_assign_agilex_emif.tcl
 if {$board == "devkit_fp82"} {
 	set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|emif_hps_noc|emif_hps_noc|pll_inst -entity $top_name
 	set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|emif_hps_noc|emif_hps_noc|ssm_inst -entity $top_name
-
 	set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|emif_hps|emif_io96b_hps_inst|emif_0_ddr5comp|emif_0_ddr5comp|t0.tniu_0|tniu_0|target_0.target_inst_0 -entity $top_name
     #set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|emif_hps|emif_hps_ph2_inst|emif|tniu_0|target_0.target_inst_0 -entity $top_name
-
 	set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|agilex_hps|intel_agilex_hps_inst|iniu_0|initiator_inst_0 -entity $top_name
 	set_instance_assignment -name NOC_CONNECTION ON -from soc_inst|agilex_hps|intel_agilex_hps_inst|iniu_0|initiator_inst_0 -to soc_inst|emif_hps|emif_io96b_hps_inst|emif_0_ddr5comp|emif_0_ddr5comp|t0.tniu_0|tniu_0|target_0.target_inst_0 -entity $top_name
 	set_instance_assignment -name NOC_TARGET_BASE_ADDRESS 0 -from soc_inst|agilex_hps|intel_agilex_hps_inst|iniu_0|initiator_inst_0 -to soc_inst|emif_hps|emif_io96b_hps_inst|emif_0_ddr5comp|emif_0_ddr5comp|t0.tniu_0|tniu_0|target_0.target_inst_0 -entity $top_name
@@ -247,17 +255,71 @@ if {$hbm_en == 1} {
 	set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|hbm_fp_0|hbm_fp_inst|tniu_ch0_ch1_sb|target_0.target_lite_inst_0 -entity $top_name
 	set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|hbm_fp_0|hbm_fp_inst|tniu_ch0_u0|target_0.target_inst_0 -entity $top_name
 	set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|hbm_fp_0|hbm_fp_inst|tniu_ch0_u1|target_0.target_inst_0 -entity $top_name
-	set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|hbm_fp_0|hbm_fp_inst|tniu_ch2_ch3_sb|target_0.target_lite_inst_0 -entity $top_name
 	set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|hbm_fp_0|hbm_fp_inst|tniu_ch2_u0|target_0.target_inst_0 -entity $top_name
 	set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|hbm_fp_0|hbm_fp_inst|tniu_ch2_u1|target_0.target_inst_0 -entity $top_name
-	set_location_assignment PIN_AP33 -to hbm_core_pll_refclk_clk
-	set_instance_assignment -name IO_STANDARD "1.2V TRUE DIFFERENTIAL SIGNALING" -to hbm_core_pll_refclk_clk -entity $top_name
-	set_location_assignment PIN_AR36 -to uibpll_refclk_clk
-	set_instance_assignment -name IO_STANDARD "1.2V TRUE DIFFERENTIAL SIGNALING" -to uibpll_refclk_clk -entity $top_name
-	set_location_assignment PIN_E38 -to hbm_only_reset_reset
+	set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|hbm_fp_0|hbm_fp_inst|tniu_ch2_ch3_sb|target_0.target_lite_inst_0 -entity $top_name
 }
 }
+} else {
+	if {$device == "AGMF039R47A1E2VC" && $hbm_en == 1 } {
+		set_global_assignment -name INI_VARS "hbmfp_enable_hps=on;"
+		set_global_assignment -name INI_VARS "ASM_ENABLE_ADVANCED_DEVICES=ON"
+		set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|noc_clock_ctrl|noc_clock_ctrl|pll_inst -entity $top_name
+		set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|noc_clock_ctrl|noc_clock_ctrl|ssm_inst -entity $top_name
+		set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|noc_initiator_with_wstrb|intel_noc_initiator_inst|iniu_0|initiator_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|noc_initiator_with_wstrb|intel_noc_initiator_inst|iniu_1|initiator_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|noc_initiator_with_wstrb|intel_noc_initiator_inst|iniu_2|initiator_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|noc_initiator_with_wstrb|intel_noc_initiator_inst|iniu_3|initiator_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|hbm_fp_0|hbm_fp_inst|tniu_ch0_ch1_sb|target_0.target_lite_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|hbm_fp_0|hbm_fp_inst|tniu_ch0_u0|target_0.target_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|hbm_fp_0|hbm_fp_inst|tniu_ch0_u1|target_0.target_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|hbm_fp_0|hbm_fp_inst|tniu_ch2_u0|target_0.target_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|hbm_fp_0|hbm_fp_inst|tniu_ch2_u1|target_0.target_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|noc_initiator_with_wstrb|intel_noc_initiator_inst|iniu_4|initiator_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|noc_initiator_with_wstrb|intel_noc_initiator_inst|iniu_5|initiator_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|noc_initiator_with_wstrb|intel_noc_initiator_inst|iniu_6|initiator_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|noc_initiator_with_wstrb|intel_noc_initiator_inst|iniu_7|initiator_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|noc_initiator_with_wstrb|intel_noc_initiator_inst|iniu_8|initiator_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|noc_initiator_with_wstrb|intel_noc_initiator_inst|iniu_9|initiator_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|noc_initiator_with_wstrb|intel_noc_initiator_inst|iniu_10|initiator_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|noc_initiator_with_wstrb|intel_noc_initiator_inst|iniu_11|initiator_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|hbm_fp_0|hbm_fp_inst|tniu_ch1_u0|target_0.target_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|hbm_fp_0|hbm_fp_inst|tniu_ch1_u1|target_0.target_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|hbm_fp_0|hbm_fp_inst|tniu_ch4_ch5_sb|target_0.target_lite_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|hbm_fp_0|hbm_fp_inst|tniu_ch3_u0|target_0.target_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|hbm_fp_0|hbm_fp_inst|tniu_ch3_u1|target_0.target_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|hbm_fp_0|hbm_fp_inst|tniu_ch4_u0|target_0.target_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|hbm_fp_0|hbm_fp_inst|tniu_ch4_u1|target_0.target_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|hbm_fp_0|hbm_fp_inst|tniu_ch5_u0|target_0.target_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|hbm_fp_0|hbm_fp_inst|tniu_ch5_u1|target_0.target_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|hbm_fp_0|hbm_fp_inst|tniu_ch6_u0|target_0.target_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|hbm_fp_0|hbm_fp_inst|tniu_ch6_u1|target_0.target_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|hbm_fp_0|hbm_fp_inst|tniu_ch7_u0|target_0.target_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|hbm_fp_0|hbm_fp_inst|tniu_ch7_u1|target_0.target_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|hbm_fp_0|hbm_fp_inst|tniu_ch6_ch7_sb|target_0.target_lite_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_CONNECTION ON -from soc_inst|agilex_hps|intel_agilex_hps_inst|iniu_0|initiator_inst_0 -to soc_inst|hbm|hbm_fp_0|hbm_fp_inst|tniu_ch2_u0|target_0.target_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_TARGET_BASE_ADDRESS 0 -from soc_inst|agilex_hps|intel_agilex_hps_inst|iniu_0|initiator_inst_0 -to soc_inst|hbm|hbm_fp_0|hbm_fp_inst|tniu_ch2_u0|target_0.target_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_CONNECTION ON -from soc_inst|agilex_hps|intel_agilex_hps_inst|iniu_0|initiator_inst_0 -to soc_inst|hbm|hbm_fp_0|hbm_fp_inst|tniu_ch2_u1|target_0.target_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_TARGET_BASE_ADDRESS 0x00040000000 -from soc_inst|agilex_hps|intel_agilex_hps_inst|iniu_0|initiator_inst_0 -to soc_inst|hbm|hbm_fp_0|hbm_fp_inst|tniu_ch2_u1|target_0.target_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_CONNECTION ON -from soc_inst|agilex_hps|intel_agilex_hps_inst|iniu_0|initiator_inst_0 -to soc_inst|hbm|hbm_fp_0|hbm_fp_inst|tniu_ch3_u0|target_0.target_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_TARGET_BASE_ADDRESS 0x180000000 -from soc_inst|agilex_hps|intel_agilex_hps_inst|iniu_0|initiator_inst_0 -to soc_inst|hbm|hbm_fp_0|hbm_fp_inst|tniu_ch3_u0|target_0.target_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_CONNECTION ON -from soc_inst|agilex_hps|intel_agilex_hps_inst|iniu_0|initiator_inst_0 -to soc_inst|hbm|hbm_fp_0|hbm_fp_inst|tniu_ch3_u1|target_0.target_inst_0 -entity $top_name
+		set_instance_assignment -name NOC_TARGET_BASE_ADDRESS 0x1C0000000 -from soc_inst|agilex_hps|intel_agilex_hps_inst|iniu_0|initiator_inst_0 -to soc_inst|hbm|hbm_fp_0|hbm_fp_inst|tniu_ch3_u1|target_0.target_inst_0 -entity $top_name
+		set_location_assignment PIN_AU52 -to noc_clock_ctrl_refclk_clk
+		set_instance_assignment -name IO_STANDARD "1.8-V" -to noc_clock_ctrl_refclk_clk
+		set_location_assignment PIN_FC22 -to noc_clock_ctrl_pll_lock_o_pll_lock_o
+		set_instance_assignment -name IO_STANDARD "1.2-V" -to noc_clock_ctrl_pll_lock_o_pll_lock_o
+		set_instance_assignment -name SLEW_RATE 1 -to noc_clock_ctrl_pll_lock_o_pll_lock_o
+
+		# todo: back anotated IOPAD_X121_Y418_N81 is not defined by user. need to ask fitter team to exclude these in report:
+		set_instance_assignment -name IO_STANDARD "1.2-V" -to hbm_cattrip_virtual_i_conduit
+		set_instance_assignment -name IO_STANDARD "1.2-V" -to hbm_temp_virtual_i_conduit[0]
+		set_instance_assignment -name IO_STANDARD "1.2-V" -to hbm_temp_virtual_i_conduit[1]
+		set_instance_assignment -name IO_STANDARD "1.2-V" -to hbm_temp_virtual_i_conduit[2]
+
 }
+}
+
 set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_ref_clk
 
 if {$hps_sdmmc4b_q1_en == 1 || $hps_sdmmc8b_q1_en == 1 || $hps_sdmmc4b_q4_en == 1 || $hps_sdmmc8b_q4_en == 1} {
@@ -517,101 +579,30 @@ set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to hps_gpio1_io${io_num}
 }
 
 if {$board != "devkit_fm87"} {
-set_instance_assignment -name INPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to fpga_led_pio[0]
-set_instance_assignment -name INPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to fpga_led_pio[1]
-set_instance_assignment -name INPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to fpga_led_pio[2]
-set_instance_assignment -name INPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to fpga_led_pio[3]
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to fpga_led_pio[0]
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to fpga_led_pio[1]
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to fpga_led_pio[2]
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to fpga_led_pio[3]
 }
 
 if {$board == "devkit_fm87"} {
-set_instance_assignment -name INPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to fpga_sgpo
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to fpga_sgpo
 }
 
 if {$board != "devkit_fp82"} {
-set_instance_assignment -name INPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to emif_hps_mem_mem_reset_n[0]
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to emif_hps_mem_mem_reset_n[0]
 }
 
-if {$board == "devkit_fp82"} {
+if {$board == "devkit_fp82" && $hps_emif_en == 1} {
 set_instance_assignment -name SLEW_RATE 0 -to fpga_clk_100[0]
 set_instance_assignment -name SLEW_RATE 0 -to emif_hps_noc_refclk_clk
+set_instance_assignment -name IO_STANDARD "1.8-V" -to emif_hps_noc_refclk_clk
 set_instance_assignment -name SLEW_RATE 0 -to fpga_reset_n[0]
 set_instance_assignment -name SLEW_RATE 0 -to emif_hps_oct_oct_rzqin
+set_instance_assignment -name IO_STANDARD "1.1-V" -to emif_hps_oct_oct_rzqin
 set_instance_assignment -name IO_STANDARD "1.1-V" -to emif_hps_noc_pll_lock_o_pll_lock_o
 set_instance_assignment -name SLEW_RATE 0 -to emif_hps_noc_pll_lock_o_pll_lock_o
-set_instance_assignment -name INPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to emif_hps_noc_pll_lock_o_pll_lock_o
-}
-
-if {$board == "DK-SI-AGF014E"} {
-set_instance_assignment -name SLEW_RATE 0 -to refclk_bti
-}
-
-if {$board == "devkit_fm86"} {
-set_location_assignment PIN_D50 -to refclk_bti
-}
-
-if {$board == "devkit_fp82"} {
-set_location_assignment PIN_AB23 -to emif_hps_mem_mem_ck_c
-set_location_assignment PIN_AC22 -to emif_hps_mem_mem_ck_t
-set_location_assignment PIN_N24 -to emif_hps_mem_mem_ca[0]
-set_location_assignment PIN_P25 -to emif_hps_mem_mem_ca[1]
-set_location_assignment PIN_T25 -to emif_hps_mem_mem_ca[2]
-set_location_assignment PIN_U24 -to emif_hps_mem_mem_ca[3]
-set_location_assignment PIN_N22 -to emif_hps_mem_mem_ca[4]
-set_location_assignment PIN_P23 -to emif_hps_mem_mem_ca[5]
-set_location_assignment PIN_U22 -to emif_hps_mem_mem_ca[6]
-set_location_assignment PIN_T23 -to emif_hps_mem_mem_ca[7]
-set_location_assignment PIN_N20 -to emif_hps_mem_mem_ca[8]
-set_location_assignment PIN_P21 -to emif_hps_mem_mem_ca[9]
-set_location_assignment PIN_Y25 -to emif_hps_mem_mem_ca[10]
-set_location_assignment PIN_W22 -to emif_hps_mem_mem_ca[11]
-set_location_assignment PIN_Y23 -to emif_hps_mem_mem_ca[12]
-set_location_assignment PIN_Y21 -to emif_hps_mem_mem_cs_n
-set_location_assignment PIN_AC24 -to emif_hps_mem_mem_reset_n
-set_location_assignment PIN_L22 -to emif_hps_mem_mem_dm_n[0]
-set_location_assignment PIN_E20 -to emif_hps_mem_mem_dm_n[1]
-set_location_assignment PIN_U16 -to emif_hps_mem_mem_dm_n[2]
-set_location_assignment PIN_L16 -to emif_hps_mem_mem_dm_n[3]
-set_location_assignment PIN_H25 -to emif_hps_mem_mem_dq[0]
-set_location_assignment PIN_G20 -to emif_hps_mem_mem_dq[1]
-set_location_assignment PIN_L24 -to emif_hps_mem_mem_dq[2]
-set_location_assignment PIN_K21 -to emif_hps_mem_mem_dq[3]
-set_location_assignment PIN_K25 -to emif_hps_mem_mem_dq[4]
-set_location_assignment PIN_L20 -to emif_hps_mem_mem_dq[5]
-set_location_assignment PIN_G24 -to emif_hps_mem_mem_dq[6]
-set_location_assignment PIN_H21 -to emif_hps_mem_mem_dq[7]
-set_location_assignment PIN_D23 -to emif_hps_mem_mem_dq[8]
-set_location_assignment PIN_D19 -to emif_hps_mem_mem_dq[9]
-set_location_assignment PIN_E22 -to emif_hps_mem_mem_dq[10]
-set_location_assignment PIN_B19 -to emif_hps_mem_mem_dq[11]
-set_location_assignment PIN_B23 -to emif_hps_mem_mem_dq[12]
-set_location_assignment PIN_E18 -to emif_hps_mem_mem_dq[13]
-set_location_assignment PIN_A22 -to emif_hps_mem_mem_dq[14]
-set_location_assignment PIN_A18 -to emif_hps_mem_mem_dq[15]
-set_location_assignment PIN_P19 -to emif_hps_mem_mem_dq[16]
-set_location_assignment PIN_T15 -to emif_hps_mem_mem_dq[17]
-set_location_assignment PIN_U18 -to emif_hps_mem_mem_dq[18]
-set_location_assignment PIN_N14 -to emif_hps_mem_mem_dq[19]
-set_location_assignment PIN_T19 -to emif_hps_mem_mem_dq[20]
-set_location_assignment PIN_U14 -to emif_hps_mem_mem_dq[21]
-set_location_assignment PIN_N18 -to emif_hps_mem_mem_dq[22]
-set_location_assignment PIN_P15 -to emif_hps_mem_mem_dq[23]
-set_location_assignment PIN_H19 -to emif_hps_mem_mem_dq[24]
-set_location_assignment PIN_K15 -to emif_hps_mem_mem_dq[25]
-set_location_assignment PIN_L18 -to emif_hps_mem_mem_dq[26]
-set_location_assignment PIN_H15 -to emif_hps_mem_mem_dq[27]
-set_location_assignment PIN_K19 -to emif_hps_mem_mem_dq[28]
-set_location_assignment PIN_L14 -to emif_hps_mem_mem_dq[29]
-set_location_assignment PIN_G18 -to emif_hps_mem_mem_dq[30]
-set_location_assignment PIN_G14 -to emif_hps_mem_mem_dq[31]
-set_location_assignment PIN_H23 -to emif_hps_mem_mem_dqs_c[0]
-set_location_assignment PIN_B21 -to emif_hps_mem_mem_dqs_c[1]
-set_location_assignment PIN_P17 -to emif_hps_mem_mem_dqs_c[2]
-set_location_assignment PIN_H17 -to emif_hps_mem_mem_dqs_c[3]
-set_location_assignment PIN_G22 -to emif_hps_mem_mem_dqs_t[0]
-set_location_assignment PIN_A20 -to emif_hps_mem_mem_dqs_t[1]
-set_location_assignment PIN_N16 -to emif_hps_mem_mem_dqs_t[2]
-set_location_assignment PIN_G16 -to emif_hps_mem_mem_dqs_t[3]
-set_location_assignment PIN_W24 -to emif_hps_mem_mem_alert_n
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to emif_hps_noc_pll_lock_o_pll_lock_o
 }
 
 # Convert timing failures to errors

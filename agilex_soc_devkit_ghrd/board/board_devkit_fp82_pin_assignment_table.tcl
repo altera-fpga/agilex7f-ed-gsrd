@@ -22,11 +22,11 @@ source ./arguments_solver.tcl
 
 ## Clock and Reset
 set fpga_clk_100_pin_list "H31"
-#set fpga_clk_100_iostandard "1.2 V"
+set fpga_clk_100_iostandard "1.2 V"
 #set fpga_clk_100_iostandard "TRUE DIFFERENTIAL SIGNALING"
 
 set fpga_reset_n_pin_list "L28"
-#set fpga_reset_n_iostandard "1.2 V"
+set fpga_reset_n_iostandard "1.2 V"
 #SGPIO
 # set fpga_sgpio_sync_pin_list "Y49"
 # set fpga_sgpio_sync_iostandard "1.2 V"
@@ -215,15 +215,15 @@ set qsfpdd_i2c_scl_pin "CT1"
 set qsfpdd_i2c_sda_pin "CY5"
 
 ## Preparing the dictionary for IOs PIN configuration
-dict set pin_assignment_table fpga_clk_100[0] location $fpga_clk_100_pin_list
-# dict set pin_assignment_table fpga_clk_100 io_standard $fpga_clk_100_iostandard
-dict set pin_assignment_table fpga_clk_100[0] direction input
-dict set pin_assignment_table fpga_clk_100[0] width_in_bits 1
+dict set pin_assignment_table fpga_clk_100 location $fpga_clk_100_pin_list
+dict set pin_assignment_table fpga_clk_100 io_standard $fpga_clk_100_iostandard
+dict set pin_assignment_table fpga_clk_100 direction input
+dict set pin_assignment_table fpga_clk_100 width_in_bits 1
 
-dict set pin_assignment_table fpga_reset_n[0] location $fpga_reset_n_pin_list
-# dict set pin_assignment_table fpga_reset_n io_standard $fpga_reset_n_iostandard
-dict set pin_assignment_table fpga_reset_n[0] direction input
-dict set pin_assignment_table fpga_reset_n[0] width 1
+dict set pin_assignment_table fpga_reset_n location $fpga_reset_n_pin_list
+dict set pin_assignment_table fpga_reset_n io_standard $fpga_reset_n_iostandard
+dict set pin_assignment_table fpga_reset_n direction input
+dict set pin_assignment_table fpga_reset_n width 1
 
 #if {$SGPIO_EN == 1} {
 # dict set pin_assignment_table fpga_sgpio_sync location $fpga_sgpio_sync_pin_list
@@ -541,17 +541,83 @@ puts "Number of ports: [dict size $pin_assignment_table]"
 # Pins obtain from Dharmesh GHRD_Requirements_EMIF_Pinmapping_Rev1_0.xlsx
 
 set emif_name "emif_hps"
-#unused
-
-#      [ list "${emif_name}_mem_mem_dm_n[0]"    		"ddr5"      "PIN_L22"              ] \
-#      [ list "${emif_name}_mem_mem_dm_n[1]"   		 	"ddr5"      "PIN_E20"              ] \
-#	  [ list "${emif_name}_mem_mem_dm_n[2]"    		 	"ddr5"      "PIN_U16"              ] \
-#	  [ list "${emif_name}_mem_mem_dm_n[3]"    		 	"ddr5"      "PIN_L16"              ] \
-
 set pin_matrix [ list \
-      [ list "NAME"                            		 	"MEM"       "fp82"                 ] \
-      [ list "${emif_name}_ref_clk_clk"      	 		"ddr5"      "PIN_T21"              ] \
-      [ list "${emif_name}_oct_oct_rzqin"      		 	"ddr5"      "PIN_AB25"             ] \
-      [ list "${emif_name}_noc_pll_lock_o_pll_lock_o"	"ddr5"      "PIN_T63"              ] \
-      [ list "${emif_name}_noc_refclk_clk"       		"ddr5"      "PIN_AU52"             ] \      
-]
+      [ list "NAME"                            		 	"MEM"        "x32_r1"     		"x40_r1"       	       ] \
+      [ list "${emif_name}_ref_clk_clk"      	 		"ddr5"       "PIN_T21"    		"PIN_T21"      	       ] \
+      [ list "${emif_name}_oct_oct_rzqin"      		 	"ddr5"       "PIN_AB25"   		"PIN_AB25"     	       ] \
+      [ list "${emif_name}_noc_pll_lock_o_pll_lock_o"	"ddr5"       "PIN_T63"    		"PIN_T63"      	       ] \
+      [ list "${emif_name}_noc_refclk_clk"       		"ddr5"       "PIN_AU52"   		"PIN_AU52"     	       ] \
+      [ list "${emif_name}_mem_mem_alert_n"      		"ddr5"       "PIN_W24"    		"PIN_W24"              ] \
+	  [ list "${emif_name}_mem_mem_ck_c"       			"ddr5"       "PIN_AB23"   		"PIN_AB23"   	       ] \
+	  [ list "${emif_name}_mem_mem_ck_t"       			"ddr5"       "PIN_AC22"   		"PIN_AC22"   	       ] \
+      [ list "${emif_name}_mem_mem_ca[0]"      			"ddr5"       "PIN_N24"    		"PIN_N24"   	       ] \
+      [ list "${emif_name}_mem_mem_ca[1]"      			"ddr5"       "PIN_P25"    		"PIN_P25"   	       ] \
+      [ list "${emif_name}_mem_mem_ca[2]"      			"ddr5"       "PIN_T25"    		"PIN_T25"   	       ] \
+      [ list "${emif_name}_mem_mem_ca[3]"      			"ddr5"       "PIN_U24"    		"PIN_U24"   	       ] \
+      [ list "${emif_name}_mem_mem_ca[4]"      			"ddr5"       "PIN_N22"    		"PIN_N22"   	       ] \
+      [ list "${emif_name}_mem_mem_ca[5]"      			"ddr5"       "PIN_P23"    		"PIN_P23"   	       ] \
+      [ list "${emif_name}_mem_mem_ca[6]"      			"ddr5"       "PIN_U22"    		"PIN_U22"   	       ] \
+      [ list "${emif_name}_mem_mem_ca[7]"      			"ddr5"       "PIN_T23"    		"PIN_T23"   	       ] \
+      [ list "${emif_name}_mem_mem_ca[8]"      			"ddr5"       "PIN_N20"    		"PIN_N20"   	       ] \
+      [ list "${emif_name}_mem_mem_ca[9]"      			"ddr5"       "PIN_P21"    		"PIN_P21"   	       ] \
+      [ list "${emif_name}_mem_mem_ca[10]"     			"ddr5"       "PIN_Y25"    		"PIN_Y25"   	       ] \
+      [ list "${emif_name}_mem_mem_ca[11]"     			"ddr5"       "PIN_W22"    		"PIN_W22"   	       ] \
+      [ list "${emif_name}_mem_mem_ca[12]"     			"ddr5"       "PIN_Y23"    		"PIN_Y23"   	       ] \
+      [ list "${emif_name}_mem_mem_cs_n"      			"ddr5"       "PIN_Y21"    		"PIN_Y21"   	       ] \
+      [ list "${emif_name}_mem_mem_reset_n"      		"ddr5"       "PIN_AC24"   		"PIN_AC24"   	       ] \
+      [ list "${emif_name}_mem_mem_dm_n[0]"    			"ddr5"       "PIN_L22"    		"PIN_L22"   	       ] \
+      [ list "${emif_name}_mem_mem_dm_n[1]"    			"ddr5"       "PIN_E20"    		"PIN_E20"   	       ] \
+      [ list "${emif_name}_mem_mem_dm_n[2]"    			"ddr5"       "PIN_U16"    		"PIN_U16"   	       ] \
+      [ list "${emif_name}_mem_mem_dm_n[3]"    			"ddr5"       "PIN_L16"    		"PIN_L16"   	       ] \
+	  [ list "${emif_name}_mem_mem_dm_n[4]"    			"ddr5"       unused	    		"PIN_E14"   	       ] \
+      [ list "${emif_name}_mem_mem_dq[0]"       		"ddr5"       "PIN_H25"    		"PIN_H25"              ] \
+      [ list "${emif_name}_mem_mem_dq[1]"       		"ddr5"       "PIN_G20"    		"PIN_G20"              ] \
+      [ list "${emif_name}_mem_mem_dq[2]"       		"ddr5"       "PIN_L24"    		"PIN_L24"              ] \
+      [ list "${emif_name}_mem_mem_dq[3]"       		"ddr5"       "PIN_K21"    		"PIN_K21"              ] \
+      [ list "${emif_name}_mem_mem_dq[4]"       		"ddr5"       "PIN_K25"    		"PIN_K25"              ] \
+      [ list "${emif_name}_mem_mem_dq[5]"       		"ddr5"       "PIN_L20"    		"PIN_L20"              ] \
+      [ list "${emif_name}_mem_mem_dq[6]"       		"ddr5"       "PIN_G24"    		"PIN_G24"              ] \
+      [ list "${emif_name}_mem_mem_dq[7]"       		"ddr5"       "PIN_H21"    		"PIN_H21"              ] \
+      [ list "${emif_name}_mem_mem_dq[8]"       		"ddr5"       "PIN_D23"    		"PIN_D23"              ] \
+      [ list "${emif_name}_mem_mem_dq[9]"       		"ddr5"       "PIN_D19"    		"PIN_D19"              ] \
+      [ list "${emif_name}_mem_mem_dq[10]"      		"ddr5"       "PIN_E22"    		"PIN_E22"              ] \
+      [ list "${emif_name}_mem_mem_dq[11]"      		"ddr5"       "PIN_B19"    		"PIN_B19"              ] \
+      [ list "${emif_name}_mem_mem_dq[12]"      		"ddr5"       "PIN_B23"    		"PIN_B23"              ] \
+      [ list "${emif_name}_mem_mem_dq[13]"      		"ddr5"       "PIN_E18"    		"PIN_E18"              ] \
+      [ list "${emif_name}_mem_mem_dq[14]"      		"ddr5"       "PIN_A22"    		"PIN_A22"              ] \
+      [ list "${emif_name}_mem_mem_dq[15]"      		"ddr5"       "PIN_A18"    		"PIN_A18"              ] \
+      [ list "${emif_name}_mem_mem_dq[16]"      		"ddr5"       "PIN_P19"    		"PIN_P19"              ] \
+      [ list "${emif_name}_mem_mem_dq[17]"      		"ddr5"       "PIN_T15"    		"PIN_T15"              ] \
+      [ list "${emif_name}_mem_mem_dq[18]"      		"ddr5"       "PIN_U18"    		"PIN_U18"              ] \
+      [ list "${emif_name}_mem_mem_dq[19]"      		"ddr5"       "PIN_N14"    		"PIN_N14"              ] \
+      [ list "${emif_name}_mem_mem_dq[20]"      		"ddr5"       "PIN_T19"    		"PIN_T19"              ] \
+      [ list "${emif_name}_mem_mem_dq[21]"      		"ddr5"       "PIN_U14"    		"PIN_U14"              ] \
+      [ list "${emif_name}_mem_mem_dq[22]"      		"ddr5"       "PIN_N18"    		"PIN_N18"              ] \
+      [ list "${emif_name}_mem_mem_dq[23]"      		"ddr5"       "PIN_P15"    		"PIN_P15"              ] \
+      [ list "${emif_name}_mem_mem_dq[24]"      		"ddr5"       "PIN_H19"    		"PIN_H19"              ] \
+      [ list "${emif_name}_mem_mem_dq[25]"      		"ddr5"       "PIN_K15"    		"PIN_K15"              ] \
+      [ list "${emif_name}_mem_mem_dq[26]"      		"ddr5"       "PIN_L18"    		"PIN_L18"              ] \
+      [ list "${emif_name}_mem_mem_dq[27]"      		"ddr5"       "PIN_H15"    		"PIN_H15"              ] \
+      [ list "${emif_name}_mem_mem_dq[28]"      		"ddr5"       "PIN_K19"    		"PIN_K19"              ] \
+      [ list "${emif_name}_mem_mem_dq[29]"      		"ddr5"       "PIN_L14"    		"PIN_L14"              ] \
+      [ list "${emif_name}_mem_mem_dq[30]"      		"ddr5"       "PIN_G18"    		"PIN_G18"              ] \
+      [ list "${emif_name}_mem_mem_dq[31]"      		"ddr5"       "PIN_G14"    		"PIN_G14"              ] \
+      [ list "${emif_name}_mem_mem_dq[32]"      		"ddr5"       unused	     		"PIN_D17"              ] \
+      [ list "${emif_name}_mem_mem_dq[33]"      		"ddr5"       unused	     		"PIN_D13"              ] \
+      [ list "${emif_name}_mem_mem_dq[34]"      		"ddr5"       unused	     		"PIN_E16"              ] \
+      [ list "${emif_name}_mem_mem_dq[35]"      		"ddr5"       unused	     		"PIN_A12"              ] \
+      [ list "${emif_name}_mem_mem_dq[36]"      		"ddr5"       unused	     		"PIN_B17"              ] \
+      [ list "${emif_name}_mem_mem_dq[37]"      		"ddr5"       unused	     		"PIN_E12"              ] \
+      [ list "${emif_name}_mem_mem_dq[38]"      		"ddr5"       unused	     		"PIN_A16"              ] \
+      [ list "${emif_name}_mem_mem_dq[39]"      		"ddr5"       unused	     		"PIN_B13"              ] \
+      [ list "${emif_name}_mem_mem_dqs_c[0]"      		"ddr5"       "PIN_H23"    		"PIN_H23"              ] \
+      [ list "${emif_name}_mem_mem_dqs_c[1]"      		"ddr5"       "PIN_B21"    		"PIN_B21"              ] \
+      [ list "${emif_name}_mem_mem_dqs_c[2]"      		"ddr5"       "PIN_P17"    		"PIN_P17"              ] \
+      [ list "${emif_name}_mem_mem_dqs_c[3]"      		"ddr5"       "PIN_H17"    		"PIN_H17"              ] \
+	  [ list "${emif_name}_mem_mem_dqs_c[4]"      		"ddr5"       unused	    		"PIN_B15"              ] \
+      [ list "${emif_name}_mem_mem_dqs_t[0]"      		"ddr5"       "PIN_G22"    		"PIN_G22"              ] \
+      [ list "${emif_name}_mem_mem_dqs_t[1]"      		"ddr5"       "PIN_A20"    		"PIN_A20"              ] \
+      [ list "${emif_name}_mem_mem_dqs_t[2]"      		"ddr5"       "PIN_N16"    		"PIN_N16"              ] \
+      [ list "${emif_name}_mem_mem_dqs_t[3]"      		"ddr5"       "PIN_G16"    		"PIN_G16"              ] \
+      [ list "${emif_name}_mem_mem_dqs_t[4]"      		"ddr5"       unused	    		"PIN_A14"              ] \
+]                                                                                  

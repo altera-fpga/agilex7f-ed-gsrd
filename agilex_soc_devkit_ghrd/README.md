@@ -14,16 +14,19 @@ The GHRD is part of the Golden System Reference Design (GSRD), which provides a 
 There are **4 LED outputs**, **4 DIP switch inputs** and **4 push-button inputs** on the Development Kit, which are connected fpga pin.
 #### Baseline
 This design boots from SD/MMC.
+HPS EMIF ECC is enabled by default.
 ```bash
 make generate-agf014eb-si-devkit-oobe-baseline
 ```
 #### NAND
 This design boots from NAND.
+HPS EMIF ECC is enabled by default.
 ```bash
 make generate-agf014eb-si-devkit-nand-baseline
 ```
 #### Partial Reconfiguration (PR)
 This design boots from SD/MMC and demonstrates partial reconfiguration.
+HPS EMIF ECC is enabled by default.
 ```bash
 make generate-agf014eb-si-devkit-oobe-pr
 ```
@@ -31,6 +34,7 @@ make generate-agf014eb-si-devkit-oobe-pr
 There are **4 LED outputs** on the Development Kit, which are connected fpga pin.
 #### Baseline
 This design boots from SD/MMC.
+HPS EMIF ECC is enabled by default.
 ```bash
 make generate-agf027f1es-soc-devkit-oobe-baseline
 ```
@@ -40,6 +44,7 @@ There are **8 LED outputs**, **8 DIP switch inputs** and **2 push-button inputs*
 Note: There are several versions for this Development Kit. They can be identified with the Ordering Code in brackets.
 #### Baseline (DK-SI-AGI027FC)
 This design boots from SD/MMC.
+HPS EMIF ECC is enabled by default.
 ```bash
 make generate-agi027fc-si-devkit-oobe-baseline
 ```
@@ -48,8 +53,18 @@ make generate-agi027fc-si-devkit-oobe-baseline
 There are **4 LED outputs** on the Development Kit, which are connected fpga pin.
 #### Baseline
 This design boots from SD/MMC.
+HPS EMIF ECC is **not enabled** for this design.
 ```bash
 make generate-agm039fes-soc-devkit-oobe-baseline
+```
+
+### Platform: Intel Agilex 7 FPGA F-Series Development Kit - 2F Tile Crypto
+There are **4 LED outputs** on the Development Kit, which are connected fpga pin.
+#### Baseline (DK-DEV-AGF023FA)
+This design boots from SD/MMC.
+HPS EMIF ECC is enabled by default.
+```bash
+make generate-agf023fa-soc-devkit-oobe-baseline
 ```
 
 ## GHRD Overview

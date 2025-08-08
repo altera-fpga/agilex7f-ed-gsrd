@@ -30,6 +30,8 @@ proc config_misc {} {
 	#set_instance_assignment -name HSSI_PARAMETER "refclk_divider_use_as_BTI_clock=TRUE" -to refclk_bti
 	#set_instance_assignment -name HSSI_PARAMETER  "refclk_divider_input_freq=156250000" -to refclk_bti
 	#set_global_assignment -name PRESERVE_UNUSED_XCVR_CHANNEL ON
+	set_location_assignment PIN_D50 -to refclk_bti
+	set_instance_assignment -name IO_STANDARD "1.2-V" -to refclk_bti
 }
 
 # Quartus settings for SDMIOs

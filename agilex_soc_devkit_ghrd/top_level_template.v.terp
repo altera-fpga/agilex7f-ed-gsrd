@@ -149,6 +149,11 @@ inout    wire [$hps_ddr_w-1:0]   	emif_hps_mem_mem_dq,
 inout	 wire [$hps_ddr_dqs_w-1:0]	emif_hps_mem_mem_dqs_c,
 inout	 wire [$hps_ddr_dqs_w-1:0]	emif_hps_mem_mem_dqs_t,
 @@}
+@@} else {
+@@if {$hbm_en == 1 } {
+input    wire          				noc_clock_ctrl_refclk_clk,
+output   wire          				noc_clock_ctrl_pll_lock_o_pll_lock_o,
+@@}
 @@}
 @@if {$hps_jtag_en == 1} {
 input    wire        hps_jtag_tck,
@@ -769,6 +774,11 @@ ${qsys_name} soc_inst (
 .emif_hps_emif_mem_0_mem_dq                    (emif_hps_mem_mem_dq),       
 .emif_hps_emif_mem_0_mem_dqs_c                 (emif_hps_mem_mem_dqs_c), 
 .emif_hps_emif_mem_0_mem_dqs_t                 (emif_hps_mem_mem_dqs_t), 
+@@}
+@@} else {
+@@if {$hbm_en == 1 } {
+.noc_clock_ctrl_pll_lock_o_pll_lock_o   (noc_clock_ctrl_pll_lock_o_pll_lock_o),
+.noc_clock_ctrl_refclk_clk              (noc_clock_ctrl_refclk_clk),
 @@}
 @@}
 @@if {$hps_jtag_en == 1} {
