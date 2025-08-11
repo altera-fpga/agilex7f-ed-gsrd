@@ -127,6 +127,7 @@ $(eval $(call create_legacy_ghrd_target, agilex_soc_devkit_ghrd, agf014eb-si-dev
 $(eval $(call create_legacy_ghrd_target, agilex_soc_devkit_ghrd, agf014eb-si-devkit-nand-baseline, ghrd_agfb014r24b2e2v, generate-agf014eb-si-devkit-nand-baseline, $(INSTALL_ROOT)/designs))
 $(eval $(call create_legacy_ghrd_target, agilex_soc_devkit_ghrd, agf014eb-si-devkit-oobe-pr, ghrd_agfb014r24b2e2v, generate-agf014eb-si-devkit-oobe-pr, $(INSTALL_ROOT)/designs))
 $(eval $(call create_legacy_ghrd_target, agilex_soc_devkit_ghrd, agm039fes-soc-devkit-oobe-baseline, ghrd_agmf039r47a1e2vr0, generate-agm039fes-soc-devkit-oobe-baseline, $(INSTALL_ROOT)/designs))
+$(eval $(call create_legacy_ghrd_target, agilex_soc_devkit_ghrd, agf023fa-soc-devkit-oobe-baseline, ghrd_agfd023r24c2e1vc, generate-agf023fa-soc-devkit-oobe-baseline, $(INSTALL_ROOT)/designs))
 
 ###############################################################################
 #                          UTILITY TARGETS
@@ -226,6 +227,8 @@ $(eval $(call create_fsbl_insertion_target, agilex_soc_devkit_ghrd, agf014eb-si-
 $(eval $(call create_fsbl_insertion_target, agilex_soc_devkit_ghrd, agf014eb-si-devkit-nand-baseline, ghrd_agfb014r24b2e2v, $(AGILEX_FSBL_IHEX), hps_debug, $(INSTALL_ROOT)/designs))
 $(eval $(call create_fsbl_insertion_target, agilex_soc_devkit_ghrd, agf014eb-si-devkit-oobe-pr, ghrd_agfb014r24b2e2v, $(AGILEX_FSBL_IHEX), hps_debug, $(INSTALL_ROOT)/designs))
 $(eval $(call create_fsbl_insertion_target, agilex_soc_devkit_ghrd, agm039fes-soc-devkit-oobe-baseline, ghrd_agmf039r47a1e2vr0, $(AGILEX_FSBL_IHEX), hps_debug, $(INSTALL_ROOT)/designs))
+$(eval $(call create_fsbl_insertion_target, agilex_soc_devkit_ghrd, agf023fa-soc-devkit-oobe-baseline, ghrd_agfd023r24c2e1vc, $(AGILEX_FSBL_IHEX), hps_debug, $(INSTALL_ROOT)/designs))
+$(eval $(call create_fsbl_insertion_target, agilex_soc_devkit_ghrd, agm039fb-soc-devkit-oobe-baseline, ghrd_agmf039r47a1e2vc, $(AGILEX_FSBL_IHEX), hps_debug, $(INSTALL_ROOT)/designs))
 
 ###############################################################################
 #                           PR Persona RBF

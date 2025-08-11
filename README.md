@@ -24,7 +24,7 @@ This is applicable to all designs.
   - Partial Reconfiguration
 
 ## Dependency
-* Altera Quartus Prime 25.1
+* Altera Quartus Prime 25.1.1
 * Supported Board
   - Intel Agilex 7 FPGA F-Series Transceiver-SoC Development Kit
   - Altera Agilex F-Series FPGA Development Kit
@@ -32,22 +32,28 @@ This is applicable to all designs.
   - Intel Agilex 7 FPGA M-Series Development Kit - HBM2e Edition
 
 ## Tested Platform for the GHRD Make flow
-* SUSE Linux Enterprise Server 12 SP5
+* SUSE Linux Enterprise Server 15 SP4
 
 ## Supported Designs
 ### Platform: Intel Agilex 7 FPGA F-Series Transceiver-SoC Development Kit
 #### Baseline
 This design boots from SD/MMC.
+HPS EMIF ECC is enabled by default.
+
 ```bash
 make agf014eb-si-devkit-oobe-baseline-all
 ```
 #### NAND
 This design boots from NAND.
+HPS EMIF ECC is enabled by default.
+
 ```bash
 make agf014eb-si-devkit-nand-baseline-all
 ```
 #### Partial Reconfiguration (PR)
 This design boots from SD/MMC and demonstrates partial reconfiguration.
+HPS EMIF ECC is enabled by default.
+
 ```bash
 make agf014eb-si-devkit-oobe-pr-all
 ```
@@ -55,6 +61,8 @@ make agf014eb-si-devkit-oobe-pr-all
 ### Platform: Altera Agilex F-Series FPGA Development Kit
 #### Baseline
 This design boots from SD/MMC.
+HPS EMIF ECC is enabled by default.
+
 ```bash
 make agf027f1es-soc-devkit-oobe-baseline-all
 ```
@@ -63,6 +71,8 @@ make agf027f1es-soc-devkit-oobe-baseline-all
 Note: There are several versions for this Development Kit. They can be identified with the Ordering Code in brackets.
 #### Baseline (DK-SI-AGI027FC)
 This design boots from SD/MMC.
+HPS EMIF ECC is enabled by default.
+
 ```bash
 make agi027fc-si-devkit-oobe-baseline-all
 ```
@@ -70,8 +80,19 @@ make agi027fc-si-devkit-oobe-baseline-all
 ### Platform: Intel Agilex 7 FPGA M-Series Development Kit - HBM2e Edition
 #### Baseline
 This design boots from SD/MMC.
+HPS EMIF ECC is **not enabled** for this design.
+
 ```bash
 make agm039fes-soc-devkit-oobe-baseline-all
+```
+
+### Platform: Intel Agilex 7 FPGA F-Series Development Kit - 2F Tile Crypto
+#### Baseline (DK-DEV-AGF023FA)
+This design boots from SD/MMC.
+HPS EMIF ECC is enabled by default.
+
+```bash
+make agf023fa-soc-devkit-oobe-baseline-all
 ```
 
 ## Install location

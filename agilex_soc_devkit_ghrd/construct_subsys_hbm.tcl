@@ -21,10 +21,11 @@ set_project_property DEVICE_FAMILY $device_family
 set_project_property DEVICE $device
 set_validation_property AUTOMATIC_VALIDATION false
 
+if {$device == "AGMF039R47A1E2VR0"} {
 add_component_param "altera_clock_bridge clock_bridge_0
                     IP_FILE_PATH ip/$sub_qsys_hbm/clock_bridge_0.ip 
                     "
-					
+}					
 					
 add_component_param "altera_iopll core_pll
                     IP_FILE_PATH ip/$sub_qsys_hbm/core_pll.ip 
@@ -57,18 +58,6 @@ add_component_param "mem_reset_handler global_user_reset_handler
 					CONDUIT_TYPE_0 export
 					"
 
-add_component_param "hbm_fp hbm_fp_0
-                    IP_FILE_PATH ip/$sub_qsys_hbm/hbm_fp_0.ip 
-                    CTRL_CH1_EN 0
-					CTRL_CH3_EN 0
-					CTRL_CH4_EN 0
-					CTRL_CH5_EN 0
-					CTRL_CH6_EN 0
-					CTRL_CH7_EN 0
-					CTRL_CH0_HBM_DATA_MODE B256_ECC	
-					CTRL_CH0_PSEUDO_BL8_EN 0
-					"
-
 add_component_param "altera_reset_bridge hbm_only_reset_bridge 
                     IP_FILE_PATH ip/$sub_qsys_hbm/hbm_only_reset_bridge.ip 
                     SYNCHRONOUS_EDGES none					
@@ -84,6 +73,18 @@ add_component_param "mem_reset_handler hbm_reset_merge
                     IP_FILE_PATH ip/$sub_qsys_hbm/hbm_reset_merge.ip
 					NUM_RESETS 2                   
                     "
+if {$device == "AGMF039R47A1E2VR0"} {
+add_component_param "hbm_fp hbm_fp_0
+                    IP_FILE_PATH ip/$sub_qsys_hbm/hbm_fp_0.ip 
+                    CTRL_CH1_EN 0
+					CTRL_CH3_EN 0
+					CTRL_CH4_EN 0
+					CTRL_CH5_EN 0
+					CTRL_CH6_EN 0
+					CTRL_CH7_EN 0
+					CTRL_CH0_HBM_DATA_MODE B256_ECC	
+					CTRL_CH0_PSEUDO_BL8_EN 0
+					"
 
 add_component_param "hps_adapter hps_adapter_0
                     IP_FILE_PATH ip/$sub_qsys_hbm/hps_adapter_0.ip
@@ -204,7 +205,203 @@ add_component_param "hydra traffic_generator
 					CONFIG_INTF_MODE CONFIG_INTF_MODE_REMOTE_JTAG
 					
 					"
+} elseif {$device == "AGMF039R47A1E2VC"} {
+add_component_param "intel_noc_initiator noc_initiator_with_wstrb
+                    IP_FILE_PATH ip/$sub_qsys_hbm/noc_initiator_with_wstrb.ip  					
+					NUM_AXI4_IF 12
+					NUM_AXI4LITE_IF 3
+					"
 					
+add_component_param "hbm_fp hbm_fp_0
+                    IP_FILE_PATH ip/$sub_qsys_hbm/hbm_fp_0.ip
+					PHY_HPS_BOOT_EN 1
+					CTRL_CH0_HBM_DATA_MODE B256_ECC	
+					CTRL_CH0_PSEUDO_BL8_EN 0
+					CTRL_CH2_CLONE_OF_ID_AUTO_BOOL 0
+					CTRL_CH2_CLONE_OF_ID None
+					CTRL_CH2_PSEUDO_BL8_EN 0
+					CTRL_CH2_HBM_DATA_MODE B256_ECC
+					CTRL_CH3_CLONE_OF_ID_AUTO_BOOL 0
+					CTRL_CH3_CLONE_OF_ID None
+					CTRL_CH3_PSEUDO_BL8_EN 0
+					CTRL_CH3_HBM_DATA_MODE B256_ECC
+					"
+
+add_component_param "hydra traffic_generator
+                    IP_FILE_PATH ip/$sub_qsys_hbm/traffic_generator.ip
+					NUM_DRIVERS 15
+					DRIVER_0_MEM_AXI4_NUM_DQ_ALUS 1
+					DRIVER_0_MEM_AXI4_NUM_DM_ALUS 1
+					DRIVER_0_MEM_AXI4_AWID_WIDTH 6
+					DRIVER_0_MEM_AXI4_USE_AWCACHE 0
+					DRIVER_0_MEM_AXI4_USE_AWREGION 0
+					DRIVER_0_MEM_AXI4_AWUSER_WIDTH 11
+					DRIVER_0_MEM_AXI4_ARID_WIDTH 6
+					DRIVER_0_MEM_AXI4_USE_ARCACHE 0
+					DRIVER_0_MEM_AXI4_USE_ARREGION 0
+					DRIVER_0_MEM_AXI4_ARUSER_WIDTH 11
+					DRIVER_0_MEM_AXI4_WDATA_WIDTH 256
+					DRIVER_0_MEM_AXI4_RDATA_WIDTH 256
+					
+					DRIVER_1_MEM_AXI4_NUM_DQ_ALUS 1
+					DRIVER_1_MEM_AXI4_NUM_DM_ALUS 1
+					DRIVER_1_MEM_AXI4_AWID_WIDTH 6
+					DRIVER_1_MEM_AXI4_USE_AWCACHE 0
+					DRIVER_1_MEM_AXI4_USE_AWREGION 0
+					DRIVER_1_MEM_AXI4_AWUSER_WIDTH 11
+					DRIVER_1_MEM_AXI4_ARID_WIDTH 6
+					DRIVER_1_MEM_AXI4_USE_ARCACHE 0
+					DRIVER_1_MEM_AXI4_USE_ARREGION 0
+					DRIVER_1_MEM_AXI4_ARUSER_WIDTH 11
+					DRIVER_1_MEM_AXI4_WDATA_WIDTH 256
+					DRIVER_1_MEM_AXI4_RDATA_WIDTH 256
+					
+					DRIVER_2_MEM_AXI4_NUM_DQ_ALUS 1
+					DRIVER_2_MEM_AXI4_NUM_DM_ALUS 1
+					DRIVER_2_MEM_AXI4_AWID_WIDTH 6
+					DRIVER_2_MEM_AXI4_USE_AWCACHE 0
+					DRIVER_2_MEM_AXI4_USE_AWREGION 0
+					DRIVER_2_MEM_AXI4_AWUSER_WIDTH 11
+					DRIVER_2_MEM_AXI4_ARID_WIDTH 6
+					DRIVER_2_MEM_AXI4_USE_ARCACHE 0
+					DRIVER_2_MEM_AXI4_USE_ARREGION 0
+					DRIVER_2_MEM_AXI4_ARUSER_WIDTH 11
+					DRIVER_2_MEM_AXI4_WDATA_WIDTH 256
+					DRIVER_2_MEM_AXI4_RDATA_WIDTH 256
+					
+					DRIVER_3_MEM_AXI4_NUM_DQ_ALUS 1
+					DRIVER_3_MEM_AXI4_NUM_DM_ALUS 1
+					DRIVER_3_MEM_AXI4_AWID_WIDTH 6
+					DRIVER_3_MEM_AXI4_USE_AWCACHE 0
+					DRIVER_3_MEM_AXI4_USE_AWREGION 0
+					DRIVER_3_MEM_AXI4_AWUSER_WIDTH 11
+					DRIVER_3_MEM_AXI4_ARID_WIDTH 6
+					DRIVER_3_MEM_AXI4_USE_ARCACHE 0
+					DRIVER_3_MEM_AXI4_USE_ARREGION 0
+					DRIVER_3_MEM_AXI4_ARUSER_WIDTH 11
+					DRIVER_3_MEM_AXI4_WDATA_WIDTH 256
+					DRIVER_3_MEM_AXI4_RDATA_WIDTH 256
+					
+					DRIVER_4_MEM_AXI4_NUM_DQ_ALUS 1
+					DRIVER_4_MEM_AXI4_NUM_DM_ALUS 1
+					DRIVER_4_MEM_AXI4_AWID_WIDTH 6
+					DRIVER_4_MEM_AXI4_USE_AWCACHE 0
+					DRIVER_4_MEM_AXI4_USE_AWREGION 0
+					DRIVER_4_MEM_AXI4_AWUSER_WIDTH 11
+					DRIVER_4_MEM_AXI4_ARID_WIDTH 6
+					DRIVER_4_MEM_AXI4_USE_ARCACHE 0
+					DRIVER_4_MEM_AXI4_USE_ARREGION 0
+					DRIVER_4_MEM_AXI4_ARUSER_WIDTH 11
+					DRIVER_4_MEM_AXI4_WDATA_WIDTH 256
+					DRIVER_4_MEM_AXI4_RDATA_WIDTH 256
+					
+					DRIVER_5_MEM_AXI4_NUM_DQ_ALUS 1
+					DRIVER_5_MEM_AXI4_NUM_DM_ALUS 1
+					DRIVER_5_MEM_AXI4_AWID_WIDTH 6
+					DRIVER_5_MEM_AXI4_USE_AWCACHE 0
+					DRIVER_5_MEM_AXI4_USE_AWREGION 0
+					DRIVER_5_MEM_AXI4_AWUSER_WIDTH 11
+					DRIVER_5_MEM_AXI4_ARID_WIDTH 6
+					DRIVER_5_MEM_AXI4_USE_ARCACHE 0
+					DRIVER_5_MEM_AXI4_USE_ARREGION 0
+					DRIVER_5_MEM_AXI4_ARUSER_WIDTH 11
+					DRIVER_5_MEM_AXI4_WDATA_WIDTH 256
+					DRIVER_5_MEM_AXI4_RDATA_WIDTH 256
+					
+					DRIVER_6_MEM_AXI4_NUM_DQ_ALUS 1
+					DRIVER_6_MEM_AXI4_NUM_DM_ALUS 1
+					DRIVER_6_MEM_AXI4_AWID_WIDTH 6
+					DRIVER_6_MEM_AXI4_USE_AWCACHE 0
+					DRIVER_6_MEM_AXI4_USE_AWREGION 0
+					DRIVER_6_MEM_AXI4_AWUSER_WIDTH 11
+					DRIVER_6_MEM_AXI4_ARID_WIDTH 6
+					DRIVER_6_MEM_AXI4_USE_ARCACHE 0
+					DRIVER_6_MEM_AXI4_USE_ARREGION 0
+					DRIVER_6_MEM_AXI4_ARUSER_WIDTH 11
+					DRIVER_6_MEM_AXI4_WDATA_WIDTH 256
+					DRIVER_6_MEM_AXI4_RDATA_WIDTH 256
+					
+					DRIVER_7_MEM_AXI4_NUM_DQ_ALUS 1
+					DRIVER_7_MEM_AXI4_NUM_DM_ALUS 1
+					DRIVER_7_MEM_AXI4_AWID_WIDTH 6
+					DRIVER_7_MEM_AXI4_USE_AWCACHE 0
+					DRIVER_7_MEM_AXI4_USE_AWREGION 0
+					DRIVER_7_MEM_AXI4_AWUSER_WIDTH 11
+					DRIVER_7_MEM_AXI4_ARID_WIDTH 6
+					DRIVER_7_MEM_AXI4_USE_ARCACHE 0
+					DRIVER_7_MEM_AXI4_USE_ARREGION 0
+					DRIVER_7_MEM_AXI4_ARUSER_WIDTH 11
+					DRIVER_7_MEM_AXI4_WDATA_WIDTH 256
+					DRIVER_7_MEM_AXI4_RDATA_WIDTH 256
+					
+					DRIVER_8_MEM_AXI4_NUM_DQ_ALUS 1
+					DRIVER_8_MEM_AXI4_NUM_DM_ALUS 1
+					DRIVER_8_MEM_AXI4_AWID_WIDTH 6
+					DRIVER_8_MEM_AXI4_USE_AWCACHE 0
+					DRIVER_8_MEM_AXI4_USE_AWREGION 0
+					DRIVER_8_MEM_AXI4_AWUSER_WIDTH 11
+					DRIVER_8_MEM_AXI4_ARID_WIDTH 6
+					DRIVER_8_MEM_AXI4_USE_ARCACHE 0
+					DRIVER_8_MEM_AXI4_USE_ARREGION 0
+					DRIVER_8_MEM_AXI4_ARUSER_WIDTH 11
+					DRIVER_8_MEM_AXI4_WDATA_WIDTH 256
+					DRIVER_8_MEM_AXI4_RDATA_WIDTH 256
+					
+					DRIVER_9_MEM_AXI4_NUM_DQ_ALUS 1
+					DRIVER_9_MEM_AXI4_NUM_DM_ALUS 1
+					DRIVER_9_MEM_AXI4_AWID_WIDTH 6
+					DRIVER_9_MEM_AXI4_USE_AWCACHE 0
+					DRIVER_9_MEM_AXI4_USE_AWREGION 0
+					DRIVER_9_MEM_AXI4_AWUSER_WIDTH 11
+					DRIVER_9_MEM_AXI4_ARID_WIDTH 6
+					DRIVER_9_MEM_AXI4_USE_ARCACHE 0
+					DRIVER_9_MEM_AXI4_USE_ARREGION 0
+					DRIVER_9_MEM_AXI4_ARUSER_WIDTH 11
+					DRIVER_9_MEM_AXI4_WDATA_WIDTH 256
+					DRIVER_9_MEM_AXI4_RDATA_WIDTH 256
+					
+					DRIVER_10_MEM_AXI4_NUM_DQ_ALUS 1
+					DRIVER_10_MEM_AXI4_NUM_DM_ALUS 1
+					DRIVER_10_MEM_AXI4_AWID_WIDTH 6
+					DRIVER_10_MEM_AXI4_USE_AWCACHE 0
+					DRIVER_10_MEM_AXI4_USE_AWREGION 0
+					DRIVER_10_MEM_AXI4_AWUSER_WIDTH 11
+					DRIVER_10_MEM_AXI4_ARID_WIDTH 6
+					DRIVER_10_MEM_AXI4_USE_ARCACHE 0
+					DRIVER_10_MEM_AXI4_USE_ARREGION 0
+					DRIVER_10_MEM_AXI4_ARUSER_WIDTH 11
+					DRIVER_10_MEM_AXI4_WDATA_WIDTH 256
+					DRIVER_10_MEM_AXI4_RDATA_WIDTH 256
+					
+					DRIVER_11_MEM_AXI4_NUM_DQ_ALUS 1
+					DRIVER_11_MEM_AXI4_NUM_DM_ALUS 1
+					DRIVER_11_MEM_AXI4_AWID_WIDTH 6
+					DRIVER_11_MEM_AXI4_USE_AWCACHE 0
+					DRIVER_11_MEM_AXI4_USE_AWREGION 0
+					DRIVER_11_MEM_AXI4_AWUSER_WIDTH 11
+					DRIVER_11_MEM_AXI4_ARID_WIDTH 6
+					DRIVER_11_MEM_AXI4_USE_ARCACHE 0
+					DRIVER_11_MEM_AXI4_USE_ARREGION 0
+					DRIVER_11_MEM_AXI4_ARUSER_WIDTH 11
+					DRIVER_11_MEM_AXI4_WDATA_WIDTH 256
+					DRIVER_11_MEM_AXI4_RDATA_WIDTH 256
+					
+					DRIVER_12_TYPE_ENUM 				DRIVER_TYPE_CSR_AXI4L
+					DRIVER_12_CSR_AXI4L_ARADDR_WIDTH	44
+					DRIVER_12_CSR_AXI4L_AWADDR_WIDTH	44
+					
+					DRIVER_13_TYPE_ENUM 				DRIVER_TYPE_CSR_AXI4L
+					DRIVER_13_CSR_AXI4L_ARADDR_WIDTH	44
+					DRIVER_13_CSR_AXI4L_AWADDR_WIDTH	44
+					
+					DRIVER_14_TYPE_ENUM 				DRIVER_TYPE_CSR_AXI4L
+					DRIVER_14_CSR_AXI4L_ARADDR_WIDTH	44
+					DRIVER_14_CSR_AXI4L_AWADDR_WIDTH	44
+					
+					CONFIG_INTF_MODE CONFIG_INTF_MODE_REMOTE_JTAG
+					
+					"
+}					
 add_component_param "altera_reset_controller traffic_generator_reset_controller
                     IP_FILE_PATH ip/$sub_qsys_hbm/traffic_generator_reset_controller.ip                    					
 					NUM_RESET_INPUTS 1
@@ -218,14 +415,99 @@ add_component_param "intel_mem_ip_reset_fanout_helper traffic_generator_reset_fa
     
 
 # connections and connection parameters
-
+if {$device == "AGMF039R47A1E2VR0"} {
 connect "   clock_bridge_0.out_clk 									hbm_fp_0.fabric_clk
 			clock_bridge_0.out_clk									hbm_reset_controller.clk
 			clock_bridge_0.out_clk									hps_adapter_0.clock_sink
 			clock_bridge_0.out_clk									noc_initiator_with_wstrb.s0_axi4_aclk
 			clock_bridge_0.out_clk									traffic_generator_reset_controller.clk
 			clock_bridge_0.out_clk									traffic_generator_reset_fanout_helper.clk
-			core_pll.locked 										global_user_reset_handler.conduit_0
+"
+
+connect_map "   hps_adapter_0.altera_axi4_master		noc_initiator_with_wstrb.s0_axi4 	0x0000
+				noc_initiator_with_wstrb.i0_axi4noc		hbm_fp_0.t_ch0_ch1_sb_axi4noc		0x0000000400000000
+				noc_initiator_with_wstrb.i0_axi4noc		hbm_fp_0.t_ch0_u0_axi4noc			0x0000
+				noc_initiator_with_wstrb.i0_axi4noc		hbm_fp_0.t_ch2_ch3_sb_axi4noc		0x0000000408000000
+				noc_initiator_with_wstrb.i2_axi4noc		hbm_fp_0.t_ch2_u0_axi4noc			0x0000
+				noc_initiator_with_wstrb.i3_axi4noc		hbm_fp_0.t_ch2_u1_axi4noc			0x0000	
+"
+
+} elseif {$device == "AGMF039R47A1E2VC"} {
+connect " 	
+			core_pll.outclk0										hbm_reset_controller.clk
+			core_pll.outclk0										noc_initiator_with_wstrb.s0_axi4_aclk
+			core_pll.outclk0										noc_initiator_with_wstrb.s4_axi4_aclk
+			core_pll.outclk0										noc_initiator_with_wstrb.s5_axi4_aclk
+			core_pll.outclk0										noc_initiator_with_wstrb.s6_axi4_aclk
+			core_pll.outclk0										noc_initiator_with_wstrb.s7_axi4_aclk
+			core_pll.outclk0										noc_initiator_with_wstrb.s8_axi4_aclk
+			core_pll.outclk0										noc_initiator_with_wstrb.s9_axi4_aclk
+			core_pll.outclk0										noc_initiator_with_wstrb.s10_axi4_aclk
+			core_pll.outclk0										noc_initiator_with_wstrb.s11_axi4_aclk
+			core_pll.outclk0										traffic_generator.driver8_clk
+			core_pll.outclk0										traffic_generator.driver9_clk
+			core_pll.outclk0										traffic_generator.driver10_clk
+			core_pll.outclk0										traffic_generator.driver11_clk
+			core_pll.outclk0										traffic_generator_reset_controller.clk
+			core_pll.outclk0										traffic_generator_reset_fanout_helper.clk
+			core_pll.outclk0										hbm_fp_0.fabric_clk
+			core_pll.outclk1										noc_initiator_with_wstrb.s0_axi4lite_aclk
+			core_pll.outclk1										noc_initiator_with_wstrb.s1_axi4lite_aclk
+			core_pll.outclk1										noc_initiator_with_wstrb.s2_axi4lite_aclk
+			core_pll.outclk1										traffic_generator.driver12_clk
+			core_pll.outclk1										traffic_generator.driver13_clk
+			core_pll.outclk1										traffic_generator.driver14_clk
+			csr_reset_fanout_helper.sresetn_out_0					noc_initiator_with_wstrb.s0_axi4lite_aresetn
+			csr_reset_fanout_helper.sresetn_out_0					noc_initiator_with_wstrb.s1_axi4lite_aresetn
+			csr_reset_fanout_helper.sresetn_out_0					noc_initiator_with_wstrb.s2_axi4lite_aresetn
+			csr_reset_fanout_helper.sresetn_out_0					traffic_generator.driver12_reset
+			csr_reset_fanout_helper.sresetn_out_0					traffic_generator.driver13_reset
+			csr_reset_fanout_helper.sresetn_out_0					traffic_generator.driver14_reset
+			traffic_generator_reset_fanout_helper.sresetn_out_8		traffic_generator.driver8_reset
+			traffic_generator_reset_fanout_helper.sresetn_out_9		traffic_generator.driver9_reset
+			traffic_generator_reset_fanout_helper.sresetn_out_10	traffic_generator.driver10_reset
+			traffic_generator_reset_fanout_helper.sresetn_out_11	traffic_generator.driver11_reset
+			traffic_generator_reset_fanout_helper.sresetn_out_20	noc_initiator_with_wstrb.s0_axi4_aresetn
+			traffic_generator_reset_fanout_helper.sresetn_out_24	noc_initiator_with_wstrb.s4_axi4_aresetn
+			traffic_generator_reset_fanout_helper.sresetn_out_25	noc_initiator_with_wstrb.s5_axi4_aresetn
+			traffic_generator_reset_fanout_helper.sresetn_out_26	noc_initiator_with_wstrb.s6_axi4_aresetn
+			traffic_generator_reset_fanout_helper.sresetn_out_27	noc_initiator_with_wstrb.s7_axi4_aresetn
+			traffic_generator_reset_fanout_helper.sresetn_out_28	noc_initiator_with_wstrb.s8_axi4_aresetn
+			traffic_generator_reset_fanout_helper.sresetn_out_29	noc_initiator_with_wstrb.s9_axi4_aresetn
+			traffic_generator_reset_fanout_helper.sresetn_out_30	noc_initiator_with_wstrb.s10_axi4_aresetn
+			traffic_generator_reset_fanout_helper.sresetn_out_31	noc_initiator_with_wstrb.s11_axi4_aresetn
+			
+"
+connect_map "  	noc_initiator_with_wstrb.i0_axi4noc		hbm_fp_0.t_ch0_u0_axi4noc				0x0000
+				noc_initiator_with_wstrb.i0_axi4noc		hbm_fp_0.t_ch0_ch1_sb_axi4noc			0x000000040000000
+				noc_initiator_with_wstrb.i0_axi4noc		hbm_fp_0.t_ch4_ch5_sb_axi4noc			0x000000080000000
+				noc_initiator_with_wstrb.i0_axi4noc		hbm_fp_0.t_ch6_ch7_sb_axi4noc			0x0000000c0000000				
+				noc_initiator_with_wstrb.i2_axi4noc		hbm_fp_0.t_ch1_u0_axi4noc				0x0000
+				noc_initiator_with_wstrb.i3_axi4noc		hbm_fp_0.t_ch1_u1_axi4noc				0x0000
+				noc_initiator_with_wstrb.i4_axi4noc		hbm_fp_0.t_ch4_u0_axi4noc				0x0000
+				noc_initiator_with_wstrb.i5_axi4noc		hbm_fp_0.t_ch4_u1_axi4noc				0x0000
+				noc_initiator_with_wstrb.i6_axi4noc		hbm_fp_0.t_ch5_u0_axi4noc				0x0000
+				noc_initiator_with_wstrb.i7_axi4noc		hbm_fp_0.t_ch5_u1_axi4noc				0x0000
+				noc_initiator_with_wstrb.i8_axi4noc		hbm_fp_0.t_ch6_u0_axi4noc				0x0000
+				noc_initiator_with_wstrb.i9_axi4noc		hbm_fp_0.t_ch6_u1_axi4noc				0x0000
+				noc_initiator_with_wstrb.i10_axi4noc	hbm_fp_0.t_ch7_u0_axi4noc				0x0000
+				noc_initiator_with_wstrb.i11_axi4noc	hbm_fp_0.t_ch7_u1_axi4noc				0x0000
+				traffic_generator.driver4_axi4			noc_initiator_with_wstrb.s4_axi4		0x0000
+				traffic_generator.driver5_axi4			noc_initiator_with_wstrb.s5_axi4		0x0000
+				traffic_generator.driver6_axi4			noc_initiator_with_wstrb.s6_axi4		0x0000
+				traffic_generator.driver7_axi4			noc_initiator_with_wstrb.s7_axi4		0x0000
+				traffic_generator.driver8_axi4			noc_initiator_with_wstrb.s8_axi4		0x0000
+				traffic_generator.driver9_axi4			noc_initiator_with_wstrb.s9_axi4		0x0000
+				traffic_generator.driver10_axi4			noc_initiator_with_wstrb.s10_axi4		0x0000
+				traffic_generator.driver11_axi4			noc_initiator_with_wstrb.s11_axi4		0x0000
+				traffic_generator.driver12_axi4l		noc_initiator_with_wstrb.s0_axi4lite	0x0000
+				traffic_generator.driver13_axi4l		noc_initiator_with_wstrb.s1_axi4lite	0x0000
+				traffic_generator.driver14_axi4l		noc_initiator_with_wstrb.s2_axi4lite	0x0000
+				
+"
+}				
+
+connect "	core_pll.locked 										global_user_reset_handler.conduit_0
             core_pll.outclk0 										noc_initiator_with_wstrb.s1_axi4_aclk
 			core_pll.outclk0 										noc_initiator_with_wstrb.s2_axi4_aclk
 			core_pll.outclk0										noc_initiator_with_wstrb.s3_axi4_aclk
@@ -266,35 +548,30 @@ connect "   clock_bridge_0.out_clk 									hbm_fp_0.fabric_clk
 "           
 
 
-connect_map "   hps_adapter_0.altera_axi4_master		noc_initiator_with_wstrb.s0_axi4 	0x0000
-				noc_initiator_with_wstrb.i0_axi4noc		hbm_fp_0.t_ch0_ch1_sb_axi4noc		0x0000000400000000
-				noc_initiator_with_wstrb.i0_axi4noc		hbm_fp_0.t_ch0_u0_axi4noc			0x0000
-				noc_initiator_with_wstrb.i0_axi4noc		hbm_fp_0.t_ch2_ch3_sb_axi4noc		0x0000000408000000
-				noc_initiator_with_wstrb.i1_axi4noc		hbm_fp_0.t_ch0_u1_axi4noc			0x0000
-				noc_initiator_with_wstrb.i2_axi4noc		hbm_fp_0.t_ch2_u0_axi4noc			0x0000
-				noc_initiator_with_wstrb.i3_axi4noc		hbm_fp_0.t_ch2_u1_axi4noc			0x0000
+connect_map " 	noc_initiator_with_wstrb.i1_axi4noc		hbm_fp_0.t_ch0_u1_axi4noc			0x0000
 				traffic_generator.driver1_axi4			noc_initiator_with_wstrb.s1_axi4	0x0000
 				traffic_generator.driver2_axi4			noc_initiator_with_wstrb.s2_axi4	0x0000
 				traffic_generator.driver3_axi4			noc_initiator_with_wstrb.s3_axi4	0x0000
-												
 "
-
-
-
 # exported interfaces
-
+if {$device == "AGMF039R47A1E2VR0"} {
 export 	clock_bridge_0				in_clk 				clock_bridge_0_in_clk
-export	core_pll					refclk				core_pll_refclk
-export	core_pll					reset				core_pll_reset
-export	global_user_reset_handler	reset_n_0			global_user_reset
-export	hbm_fp_0					cattrip_i			hbm_cattrip_virtual_i		
-export	hbm_fp_0					temp_i				hbm_temp_virtual_i							
-export	hbm_fp_0					uibpll_refclk		uibpll_refclk			
-export	hbm_only_reset_bridge		in_reset			hbm_only_reset			
 export	hps_adapter_0				altera_axi4_slave	hps_adapter_0_altera_axi4_slave				
 export	hps_adapter_0				reset_sink			hps_adapter_0_reset_sink					
 export	noc_initiator_with_wstrb	s0_axi4_aresetn		noc_initiator_with_wstrb_s0_axi4_aresetn	
-
+} elseif {$device == "AGMF039R47A1E2VC"} {
+export	hbm_fp_0					t_ch2_u0_hps_axi4noc		hbm_fp_0_t_ch2_u0_hps_axi4noc
+export 	hbm_fp_0					t_ch2_u1_hps_axi4noc		hbm_fp_0_t_ch2_u1_hps_axi4noc
+export 	hbm_fp_0					t_ch3_u0_hps_axi4noc		hbm_fp_0_t_ch3_u0_hps_axi4noc
+export 	hbm_fp_0					t_ch3_u1_hps_axi4noc		hbm_fp_0_t_ch3_u1_hps_axi4noc
+}
+export	core_pll					refclk				core_pll_refclk
+export	core_pll					reset				core_pll_reset
+export	global_user_reset_handler	reset_n_0			global_user_reset
+export	hbm_fp_0					cattrip_i			hbm_cattrip_virtual_i	
+export	hbm_fp_0					temp_i				hbm_temp_virtual_i	
+export	hbm_fp_0					uibpll_refclk		uibpll_refclk	
+export	hbm_only_reset_bridge		in_reset			hbm_only_reset	
 
 # # interconnect requirements
 # set_domain_assignment {$system} {qsys_mm.clockCrossingAdapter} {AUTO}

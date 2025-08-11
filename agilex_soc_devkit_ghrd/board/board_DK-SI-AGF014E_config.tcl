@@ -27,6 +27,9 @@ set hps_emif_bank_gp_default_width 1
 # Quartus settings for miscellaneous
 proc config_misc {} {
     global hps_etile_1588_en
+    set_instance_assignment -name IO_STANDARD "DIFFERENTIAL LVPECL" -to refclk_bti
+    set_instance_assignment -name SLEW_RATE 0 -to refclk_bti
+
     if {$hps_etile_1588_en == 0} {
         #HSDES 1507845020. Additional refclk_bti to preserve Etile XCVR
         set_location_assignment PIN_AT13 -to refclk_bti
