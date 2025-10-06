@@ -24,7 +24,7 @@ This is applicable to all designs.
   - Partial Reconfiguration
 
 ## Dependency
-* Altera Quartus Prime 25.1.1
+* Altera Quartus Prime 25.3
 * Supported Board
   - Intel Agilex 7 FPGA F-Series Transceiver-SoC Development Kit
   - Altera Agilex F-Series FPGA Development Kit
@@ -58,33 +58,33 @@ HPS EMIF ECC is enabled by default.
 make agf014eb-si-devkit-oobe-pr-all
 ```
 
-### Platform: Altera Agilex F-Series FPGA Development Kit
-#### Baseline
-This design boots from SD/MMC.
-HPS EMIF ECC is enabled by default.
-
-```bash
-make agf027f1es-soc-devkit-oobe-baseline-all
-```
-
 ### Platform: Intel Agilex 7 FPGA I-Series Transceiver-SoC Development Kit
 Note: There are several versions for this Development Kit. They can be identified with the Ordering Code in brackets.
 #### Baseline (DK-SI-AGI027FC)
 This design boots from SD/MMC.
-HPS EMIF ECC is enabled by default.
-
 ```bash
 make agi027fc-si-devkit-oobe-baseline-all
 ```
 
 ### Platform: Intel Agilex 7 FPGA M-Series Development Kit - HBM2e Edition
-#### Baseline
+#### Baseline (DK-DEV-AGM039FES)
 This design boots from SD/MMC.
+It also intantiates External Memory Interfaces IP for Hard Processor System to access the DDR5 memory.
+HPS uses **DDR5** as memory and the High Bandwidth Memory (HBM2E) is **not enabled**.
 HPS EMIF ECC is **not enabled** for this design.
-
 ```bash
 make agm039fes-soc-devkit-oobe-baseline-all
 ```
+
+#### Baseline (DK-DEV-AGM039EA)
+This design boots from from SD/MMC.
+It also intantiates High Bandwidth Memory (HBM2E) Interface Agilex 7 IP to access the in-package HBM2e memory.
+HPS uses **HBM2e** as memory and the DDR5 memory is **not enabled**.
+HBM ECC is **enabled** for this design
+```bash
+make agm039ea-soc-devkit-oobe-baseline-all
+```
+
 
 ### Platform: Intel Agilex 7 FPGA F-Series Development Kit - 2F Tile Crypto
 #### Baseline (DK-DEV-AGF023FA)

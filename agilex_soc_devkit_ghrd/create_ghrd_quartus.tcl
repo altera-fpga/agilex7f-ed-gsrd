@@ -94,7 +94,7 @@ if {$hps_etile_1588_en == 1} {
 }
 
 # enabling signaltap
-if {$cross_trigger_en == 1} { 
+if {$cross_trigger_en == 1} {
 set_global_assignment -name ENABLE_SIGNALTAP ON
 set_global_assignment -name USE_SIGNALTAP_FILE cti_tapping.stp
 set_global_assignment -name SIGNALTAP_FILE cti_tapping.stp
@@ -242,11 +242,11 @@ source ./pin_assign_agilex_emif.tcl
 if {$board == "devkit_fp82"} {
 	set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|emif_hps_noc|emif_hps_noc|pll_inst -entity $top_name
 	set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|emif_hps_noc|emif_hps_noc|ssm_inst -entity $top_name
-	set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|emif_hps|emif_io96b_hps_inst|emif_0_ddr5comp|emif_0_ddr5comp|t0.tniu_0|tniu_0|target_0.target_inst_0 -entity $top_name
+	set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|emif_hps|emif_io96b_hps_inst|emif_0_ddr5comp|emif_0_ddr5comp|emif_arch_top|t0.tniu_0|tniu_0|target_0.target_inst_0 -entity $top_name
     #set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|emif_hps|emif_hps_ph2_inst|emif|tniu_0|target_0.target_inst_0 -entity $top_name
 	set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|agilex_hps|intel_agilex_hps_inst|iniu_0|initiator_inst_0 -entity $top_name
-	set_instance_assignment -name NOC_CONNECTION ON -from soc_inst|agilex_hps|intel_agilex_hps_inst|iniu_0|initiator_inst_0 -to soc_inst|emif_hps|emif_io96b_hps_inst|emif_0_ddr5comp|emif_0_ddr5comp|t0.tniu_0|tniu_0|target_0.target_inst_0 -entity $top_name
-	set_instance_assignment -name NOC_TARGET_BASE_ADDRESS 0 -from soc_inst|agilex_hps|intel_agilex_hps_inst|iniu_0|initiator_inst_0 -to soc_inst|emif_hps|emif_io96b_hps_inst|emif_0_ddr5comp|emif_0_ddr5comp|t0.tniu_0|tniu_0|target_0.target_inst_0 -entity $top_name
+	set_instance_assignment -name NOC_CONNECTION ON -from soc_inst|agilex_hps|intel_agilex_hps_inst|iniu_0|initiator_inst_0 -to soc_inst|emif_hps|emif_io96b_hps_inst|emif_0_ddr5comp|emif_0_ddr5comp|emif_arch_top|t0.tniu_0|tniu_0|target_0.target_inst_0 -entity $top_name
+	set_instance_assignment -name NOC_TARGET_BASE_ADDRESS 0 -from soc_inst|agilex_hps|intel_agilex_hps_inst|iniu_0|initiator_inst_0 -to soc_inst|emif_hps|emif_io96b_hps_inst|emif_0_ddr5comp|emif_0_ddr5comp|emif_arch_top|t0.tniu_0|tniu_0|target_0.target_inst_0 -entity $top_name
 if {$hbm_en == 1} {
 	set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|noc_initiator_with_wstrb|intel_noc_initiator_inst|iniu_0|initiator_inst_0 -entity $top_name
 	set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|hbm|noc_initiator_with_wstrb|intel_noc_initiator_inst|iniu_1|initiator_inst_0 -entity $top_name
@@ -311,12 +311,6 @@ if {$hbm_en == 1} {
 		set_instance_assignment -name IO_STANDARD "1.2-V" -to noc_clock_ctrl_pll_lock_o_pll_lock_o
 		set_instance_assignment -name SLEW_RATE 1 -to noc_clock_ctrl_pll_lock_o_pll_lock_o
 
-		# todo: back anotated IOPAD_X121_Y418_N81 is not defined by user. need to ask fitter team to exclude these in report:
-		set_instance_assignment -name IO_STANDARD "1.2-V" -to hbm_cattrip_virtual_i_conduit
-		set_instance_assignment -name IO_STANDARD "1.2-V" -to hbm_temp_virtual_i_conduit[0]
-		set_instance_assignment -name IO_STANDARD "1.2-V" -to hbm_temp_virtual_i_conduit[1]
-		set_instance_assignment -name IO_STANDARD "1.2-V" -to hbm_temp_virtual_i_conduit[2]
-
 }
 }
 
@@ -326,8 +320,8 @@ if {$hps_sdmmc4b_q1_en == 1 || $hps_sdmmc8b_q1_en == 1 || $hps_sdmmc4b_q4_en == 
 set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_sdmmc_CMD
 set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_sdmmc_CCLK
 set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to hps_sdmmc_CMD
-set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to hps_sdmmc_CCLK 
-set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to hps_sdmmc_CMD
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to hps_sdmmc_CCLK
+set_instance_assignment -name WEAK_PULL_UP_DN_SEL PULL_UP_20 -to hps_sdmmc_CMD
 if {$hps_sdmmc8b_q1_en == 1 || $hps_sdmmc8b_q4_en == 1} {
 set sdmmc_bits 8
 } else {
@@ -335,9 +329,9 @@ set sdmmc_bits 4
 }
 for {set i 0} {$i < $sdmmc_bits} {incr i} {
 set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_sdmmc_D${i}
-set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to hps_sdmmc_D${i} 
-set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to hps_sdmmc_D${i}
-} 
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to hps_sdmmc_D${i}
+set_instance_assignment -name WEAK_PULL_UP_DN_SEL PULL_UP_20 -to hps_sdmmc_D${i}
+}
 }
 if {$hps_usb0_en == 1 || $hps_usb1_en == 1} {
 set usb ""
@@ -353,13 +347,13 @@ set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_usb${usb_en}_STP
 set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_usb${usb_en}_DIR
 set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_usb${usb_en}_NXT
 set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to hps_usb${usb_en}_STP
-set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to hps_usb${usb_en}_CLK
-set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to hps_usb${usb_en}_DIR
-set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to hps_usb${usb_en}_NXT
+set_instance_assignment -name WEAK_PULL_UP_DN_SEL PULL_UP_20 -to hps_usb${usb_en}_CLK
+set_instance_assignment -name WEAK_PULL_UP_DN_SEL PULL_UP_20 -to hps_usb${usb_en}_DIR
+set_instance_assignment -name WEAK_PULL_UP_DN_SEL PULL_UP_20 -to hps_usb${usb_en}_NXT
 for {set j 0} {$j < 8} {incr j} {
 set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_usb${usb_en}_DATA${j}
 set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to hps_usb${usb_en}_DATA${j}
-set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to hps_usb${usb_en}_DATA${j}
+set_instance_assignment -name WEAK_PULL_UP_DN_SEL PULL_UP_20 -to hps_usb${usb_en}_DATA${j}
 }
 }
 }
@@ -394,8 +388,8 @@ set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_emac${emac_en}_RX_CLK
 set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_emac${emac_en}_RX_CTL
 set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to hps_emac${emac_en}_TX_CLK
 set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to hps_emac${emac_en}_TX_CTL
-set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to hps_emac${emac_en}_RX_CLK
-set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to hps_emac${emac_en}_RX_CTL
+set_instance_assignment -name WEAK_PULL_UP_DN_SEL PULL_UP_20 -to hps_emac${emac_en}_RX_CLK
+set_instance_assignment -name WEAK_PULL_UP_DN_SEL PULL_UP_20 -to hps_emac${emac_en}_RX_CTL
 #set_instance_assignment -name SLEW_RATE 1 -to hps_emac${emac_en}_TX_CLK
 #set_instance_assignment -name SLEW_RATE 1 -to hps_emac${emac_en}_TX_CTL
 #set_instance_assignment -name OUTPUT_DELAY_CHAIN 8 -to hps_emac0_TX_CLK
@@ -405,7 +399,7 @@ set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_emac${emac_en}_RXD${j}
 set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_emac${emac_en}_TXD${j}
 set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to hps_emac${emac_en}_TXD${j}
 #set_instance_assignment -name SLEW_RATE 1 -to hps_emac${emac_en}_TXD${j}
-set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to hps_emac${emac_en}_RXD${j}
+set_instance_assignment -name WEAK_PULL_UP_DN_SEL PULL_UP_20 -to hps_emac${emac_en}_RXD${j}
 }
 if {($emac_en == 0 && ($hps_mdio0_q1_en == 1 || $hps_mdio0_q3_en == 1 || $hps_mdio0_q4_en == 1)) || ($emac_en == 1 && ($hps_mdio1_q1_en == 1 || $hps_mdio1_q4_en == 1)) || ($emac_en == 2 && ($hps_mdio2_q1_en == 1 || $hps_mdio2_q3_en == 1))} {
 set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_emac${emac_en}_MDIO
@@ -413,7 +407,7 @@ set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_emac${emac_en}_MDC
 set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to hps_emac${emac_en}_MDIO
 set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to hps_emac${emac_en}_MDC
 set_instance_assignment -name AUTO_OPEN_DRAIN_PINS ON -to hps_emac${emac_en}_MDIO
-set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to hps_emac${emac_en}_MDIO
+set_instance_assignment -name WEAK_PULL_UP_DN_SEL PULL_UP_20 -to hps_emac${emac_en}_MDIO
 }
 }
 }
@@ -467,12 +461,12 @@ foreach uart_en $uart {
 set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_uart${uart_en}_TX
 set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_uart${uart_en}_RX
 set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to hps_uart${uart_en}_TX
-set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to hps_uart${uart_en}_RX
+set_instance_assignment -name WEAK_PULL_UP_DN_SEL PULL_UP_20 -to hps_uart${uart_en}_RX
 if {($hps_uart0_fc_en == 1 && $uart_en == 0) || ($hps_uart1_fc_en == 1 && $uart_en == 1)} {
 set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_uart${uart_en}_CTS_N
 set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_uart${uart_en}_RTS_N
 set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to hps_uart${uart_en}_RTS_N
-set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to hps_uart${uart_en}_CTS_N
+set_instance_assignment -name WEAK_PULL_UP_DN_SEL PULL_UP_20 -to hps_uart${uart_en}_CTS_N
 }
 }
 }
@@ -486,13 +480,13 @@ lappend i2c 1
 }
 foreach i2c_en $i2c {
 set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_i2c${i2c_en}_SDA
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_i2c${i2c_en}_SCL  
+set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_i2c${i2c_en}_SCL
 set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to hps_i2c${i2c_en}_SDA
 set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to hps_i2c${i2c_en}_SCL
 set_instance_assignment -name AUTO_OPEN_DRAIN_PINS ON -to hps_i2c${i2c_en}_SDA
 set_instance_assignment -name AUTO_OPEN_DRAIN_PINS ON -to hps_i2c${i2c_en}_SCL
-set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to hps_i2c${i2c_en}_SDA
-set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to hps_i2c${i2c_en}_SCL
+set_instance_assignment -name WEAK_PULL_UP_DN_SEL PULL_UP_20 -to hps_i2c${i2c_en}_SDA
+set_instance_assignment -name WEAK_PULL_UP_DN_SEL PULL_UP_20 -to hps_i2c${i2c_en}_SCL
 set_instance_assignment -name SLEW_RATE 0 -to hps_i2c${i2c_en}_SDA
 set_instance_assignment -name SLEW_RATE 0 -to hps_i2c${i2c_en}_SCL
 }
@@ -510,29 +504,29 @@ lappend i2c_emac 2
 }
 foreach i2c_emac_en $i2c_emac {
 set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_i2c_emac${i2c_emac_en}_SDA
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_i2c_emac${i2c_emac_en}_SCL  
+set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_i2c_emac${i2c_emac_en}_SCL
 set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to hps_i2c_emac${i2c_emac_en}_SDA
 set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to hps_i2c_emac${i2c_emac_en}_SCL
 set_instance_assignment -name AUTO_OPEN_DRAIN_PINS ON -to hps_i2c_emac${i2c_emac_en}_SDA
 set_instance_assignment -name AUTO_OPEN_DRAIN_PINS ON -to hps_i2c_emac${i2c_emac_en}_SCL
-set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to hps_i2c_emac${i2c_emac_en}_SDA
-set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to hps_i2c_emac${i2c_emac_en}_SCL
+set_instance_assignment -name WEAK_PULL_UP_DN_SEL PULL_UP_20 -to hps_i2c_emac${i2c_emac_en}_SDA
+set_instance_assignment -name WEAK_PULL_UP_DN_SEL PULL_UP_20 -to hps_i2c_emac${i2c_emac_en}_SCL
 }
 }
 if {$hps_nand_q12_en == 1 || $hps_nand_q34_en == 1 || $hps_nand_16b_en == 1} {
 set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_nand_WE_N
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_nand_RE_N 
+set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_nand_RE_N
 set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_nand_WP_N
 set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_nand_CLE
 set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_nand_ALE
 set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_nand_RB
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_nand_CE_N 
+set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_nand_CE_N
 set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to hps_nand_WE_N
 set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to hps_nand_RE_N
-set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to hps_nand_WP_N 
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to hps_nand_WP_N
 set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to hps_nand_CLE
 set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to hps_nand_ALE
-set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to hps_nand_CE_N  
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to hps_nand_CE_N
 if {$hps_nand_16b_en == 1} {
 set nand_bits 16
 } else {
@@ -541,7 +535,7 @@ set nand_bits 8
 for {set k 0} {$k < $nand_bits} {incr k} {
 set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_nand_ADQ${k}
 set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to hps_nand_ADQ${k}
-} 
+}
 }
 if {$hps_trace_q12_en == 1 || $hps_trace_q34_en == 1} {
 set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_trace_CLK
@@ -558,21 +552,21 @@ set trace_bits 4
 for {set k 0} {$k < $trace_bits} {incr k} {
 set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_trace_D${k}
 set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to hps_trace_D${k}
-} 
+}
 }
 if {$hps_gpio0_en == 1 || $hps_gpio1_en == 1} {
 if {$hps_gpio0_en == 1} {
 foreach io_num $hps_gpio0_list {
 set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_gpio0_io${io_num}
 set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to hps_gpio0_io${io_num}
-set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to hps_gpio0_io${io_num}
+set_instance_assignment -name WEAK_PULL_UP_DN_SEL PULL_UP_20 -to hps_gpio0_io${io_num}
 }
 }
 if {$hps_gpio1_en == 1} {
 foreach io_num $hps_gpio1_list {
 set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_gpio1_io${io_num}
 set_instance_assignment -name CURRENT_STRENGTH_NEW 2MA -to hps_gpio1_io${io_num}
-set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to hps_gpio1_io${io_num}
+set_instance_assignment -name WEAK_PULL_UP_DN_SEL PULL_UP_20 -to hps_gpio1_io${io_num}
 }
 }
 }

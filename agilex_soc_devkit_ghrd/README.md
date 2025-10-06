@@ -30,14 +30,6 @@ HPS EMIF ECC is enabled by default.
 ```bash
 make generate-agf014eb-si-devkit-oobe-pr
 ```
-### Platform: Altera Agilex F-Series FPGA Development Kit
-There are **4 LED outputs** on the Development Kit, which are connected fpga pin.
-#### Baseline
-This design boots from SD/MMC.
-HPS EMIF ECC is enabled by default.
-```bash
-make generate-agf027f1es-soc-devkit-oobe-baseline
-```
 
 ### Platform: Intel Agilex 7 FPGA I-Series Transceiver-SoC Development Kit
 There are **8 LED outputs**, **8 DIP switch inputs** and **2 push-button inputs** on the Development Kit, which are connected fpga pin.<br>
@@ -51,11 +43,22 @@ make generate-agi027fc-si-devkit-oobe-baseline
 
 ### Platform: Intel Agilex 7 FPGA M-Series Development Kit - HBM2e Edition
 There are **4 LED outputs** on the Development Kit, which are connected fpga pin.
-#### Baseline
+#### Baseline (DK-DEV-AGM039FES)
 This design boots from SD/MMC.
+It also intantiates External Memory Interfaces IP for Hard Processor System to access the DDR5 memory.
+HPS uses **DDR5** as memory and the High Bandwidth Memory (HBM2E) is **not enabled**.
 HPS EMIF ECC is **not enabled** for this design.
 ```bash
 make generate-agm039fes-soc-devkit-oobe-baseline
+```
+
+#### Baseline (DK-DEV-AGM039EA)
+This design boots from from SD/MMC.
+It also intantiates High Bandwidth Memory (HBM2E) Interface Agilex 7 IP to access the in-package HBM2e memory.
+HPS uses **HBM2e** as memory and the DDR5 memory is **not enabled**.
+HBM ECC is **enabled** for this design.
+```bash
+make agm039ea-soc-devkit-oobe-baseline-all
 ```
 
 ### Platform: Intel Agilex 7 FPGA F-Series Development Kit - 2F Tile Crypto
@@ -88,7 +91,7 @@ Refer to [Intel Agilex 7 Hard Processor System Address Map and Register Definiti
 ### System peripherals
 The the memory map of system peripherals in the FPGA portion of the SoC as viewed by the MPU (Cortex-A53), which starts at the lightweight HPS-to-FPGA base address of 0xF900_0000, is listed in the following table.
 
-Note: 
+Note:
 - All interrupt sources are also connected to an interrupt latency counter (ILC) module in the system, which enables System Console to be aware of the interrupt status of each peripheral in the FPGA portion of the SoC.
 - Each Development Kit have different number of LED outputs, push button inputs and DIP switch inputs. They are documented in individual platform of [Supported Designs](#supported-designs).
 

@@ -83,7 +83,7 @@ $(strip $(2))-prep: | $(strip $(1))/output_files
 
 .PHONY: $(strip $(2))-generate-design
 $(strip $(2))-generate-design: prepare-tools | $(strip $(1))/output_files
-	$(MAKE) -C $(strip $(1)) $(4)
+	$(MAKE) -C $(strip $(1)) $(strip $(4))
 
 .PHONY: $(strip $(2))-package-design
 $(strip $(2))-package-design: | $(strip $(5))
@@ -121,13 +121,13 @@ endef
 
 # Create the recipes by calling create_ghrd_target on each design
 # Agilex 7
-$(eval $(call create_legacy_ghrd_target, agilex_soc_devkit_ghrd, agf027f1es-soc-devkit-oobe-baseline, ghrd_agfb027r24c2e2v, generate-agf027f1es-soc-devkit-oobe-baseline, $(INSTALL_ROOT)/designs))
 $(eval $(call create_legacy_ghrd_target, agilex_soc_devkit_ghrd, agi027fc-si-devkit-oobe-baseline, ghrd_agib027r31b1e1vb, generate-agi027fc-si-devkit-oobe-baseline, $(INSTALL_ROOT)/designs))
 $(eval $(call create_legacy_ghrd_target, agilex_soc_devkit_ghrd, agf014eb-si-devkit-oobe-baseline, ghrd_agfb014r24b2e2v, generate-agf014eb-si-devkit-oobe-baseline, $(INSTALL_ROOT)/designs))
 $(eval $(call create_legacy_ghrd_target, agilex_soc_devkit_ghrd, agf014eb-si-devkit-nand-baseline, ghrd_agfb014r24b2e2v, generate-agf014eb-si-devkit-nand-baseline, $(INSTALL_ROOT)/designs))
 $(eval $(call create_legacy_ghrd_target, agilex_soc_devkit_ghrd, agf014eb-si-devkit-oobe-pr, ghrd_agfb014r24b2e2v, generate-agf014eb-si-devkit-oobe-pr, $(INSTALL_ROOT)/designs))
 $(eval $(call create_legacy_ghrd_target, agilex_soc_devkit_ghrd, agm039fes-soc-devkit-oobe-baseline, ghrd_agmf039r47a1e2vr0, generate-agm039fes-soc-devkit-oobe-baseline, $(INSTALL_ROOT)/designs))
 $(eval $(call create_legacy_ghrd_target, agilex_soc_devkit_ghrd, agf023fa-soc-devkit-oobe-baseline, ghrd_agfd023r24c2e1vc, generate-agf023fa-soc-devkit-oobe-baseline, $(INSTALL_ROOT)/designs))
+$(eval $(call create_legacy_ghrd_target, agilex_soc_devkit_ghrd, agm039ea-soc-devkit-oobe-baseline, ghrd_agmf039r47a1e2vc, generate-agm039ea-soc-devkit-oobe-baseline, $(INSTALL_ROOT)/designs))
 
 ###############################################################################
 #                          UTILITY TARGETS
@@ -228,7 +228,7 @@ $(eval $(call create_fsbl_insertion_target, agilex_soc_devkit_ghrd, agf014eb-si-
 $(eval $(call create_fsbl_insertion_target, agilex_soc_devkit_ghrd, agf014eb-si-devkit-oobe-pr, ghrd_agfb014r24b2e2v, $(AGILEX_FSBL_IHEX), hps_debug, $(INSTALL_ROOT)/designs))
 $(eval $(call create_fsbl_insertion_target, agilex_soc_devkit_ghrd, agm039fes-soc-devkit-oobe-baseline, ghrd_agmf039r47a1e2vr0, $(AGILEX_FSBL_IHEX), hps_debug, $(INSTALL_ROOT)/designs))
 $(eval $(call create_fsbl_insertion_target, agilex_soc_devkit_ghrd, agf023fa-soc-devkit-oobe-baseline, ghrd_agfd023r24c2e1vc, $(AGILEX_FSBL_IHEX), hps_debug, $(INSTALL_ROOT)/designs))
-$(eval $(call create_fsbl_insertion_target, agilex_soc_devkit_ghrd, agm039fb-soc-devkit-oobe-baseline, ghrd_agmf039r47a1e2vc, $(AGILEX_FSBL_IHEX), hps_debug, $(INSTALL_ROOT)/designs))
+$(eval $(call create_fsbl_insertion_target, agilex_soc_devkit_ghrd, agm039ea-soc-devkit-oobe-baseline, ghrd_agmf039r47a1e2vc, $(AGILEX_FSBL_IHEX), hps_debug, $(INSTALL_ROOT)/designs))
 
 ###############################################################################
 #                           PR Persona RBF
@@ -242,6 +242,7 @@ $(eval $(call create_fsbl_insertion_target, agilex_soc_devkit_ghrd, agm039fb-soc
 define create_install_pr_rbf_target
 $(strip $(1))/output_files/$(strip $(3)).$(strip $(4)).rbf: | $(strip $(1))/output_files
 	$(MAKE) -C $(strip $(1)) build-agf014eb-si-devkit-oobe-pr_alternate-rbf
+	cp -f $(strip $(1))/output_files/$(notdir $(subst -,/,$(strip $(3))).$(strip $(4)).rbf) $(strip $(1))/output_files/$(strip $(3)).$(strip $(4)).rbf
 
 .PHONY: $(strip $(2))-$(strip $(3))-install-pr-rbf
 $(strip $(2))-$(strip $(3))-install-pr-rbf : | $(strip $(1))/output_files/$(strip $(3)).$(strip $(4)).rbf $(strip $(6))
@@ -253,8 +254,8 @@ $(strip $(2))-install-sof : $(strip $(2))-$(strip $(3))-install-pr-rbf
 endef
 
 # Create install PR RBF target
-$(eval $(call create_install_pr_rbf_target, agilex_soc_devkit_ghrd, agf014eb-si-devkit-oobe-pr, ghrd_agfb014r24b2e2v, pr_partition_0, persona0, $(INSTALL_ROOT)/designs))
-$(eval $(call create_install_pr_rbf_target, agilex_soc_devkit_ghrd, agf014eb-si-devkit-oobe-pr, alternate_persona, pr_partition_0, persona1, $(INSTALL_ROOT)/designs))
+$(eval $(call create_install_pr_rbf_target, agilex_soc_devkit_ghrd, agf014eb-si-devkit-oobe-pr, agf014eb-si-devkit-oobe-pr-ghrd_agfb014r24b2e2v, pr_partition_0, persona0, $(INSTALL_ROOT)/designs))
+$(eval $(call create_install_pr_rbf_target, agilex_soc_devkit_ghrd, agf014eb-si-devkit-oobe-pr, agf014eb-si-devkit-oobe-pr-alternate_persona, pr_partition_0, persona1, $(INSTALL_ROOT)/designs))
 
 # Include not_shipped Makefile if present
 -include not_shipped/Makefile.mk

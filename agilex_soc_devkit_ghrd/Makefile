@@ -982,6 +982,15 @@ generate-agm039fes-soc-devkit-oobe-baseline:
 generate-agf023fa-soc-devkit-oobe-baseline:
 	make generate_from_tcl_internal BOARD_TYPE=DK-DEV-AGF023FA BOARD_PWRMGT=linear
 
+generate-agm039ea-soc-devkit-oobe-baseline:
+	make generate_from_tcl_internal QUARTUS_DEVICE=AGMF039R47A1E2VC BOARD_TYPE=devkit_fp82 CONFIG_SCHEME="AVST\ X8" BOARD_PWRMGT=linear ENABLE_HPS_EMIF_ECC=0 ENABLE_WATCHDOG_RST=0 OCM_DATAWIDTH=32 HBM_EN=1 HPS_F2S_IRQ_EN=0 HPS_STM_EN=0 HPS_EMIF_EN=0
+	
+generate-fpga_first_revb_linear:
+	make generate_from_tcl_internal BOOTS_FIRST=fpga BOARD_TYPE=DK-SI-AGF014E BOARD_PWRMGT=linear ENABLE_HPS_EMIF_ECC=1
+	
+generate-fpga_first_pr_linear: 
+	make generate_from_tcl_internal BOOTS_FIRST=fpga BOARD_TYPE=DK-SI-AGF014E BOARD_PWRMGT=linear ENABLE_HPS_EMIF_ECC=1 ENABLE_PARTIAL_RECONFIGURATION=1
+
 ################################################
 
 
