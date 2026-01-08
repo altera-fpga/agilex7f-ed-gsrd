@@ -130,6 +130,7 @@ if {$jtag_ocm_en == 1} {
 add_component_param "altera_avalon_sysid_qsys sysid
                     IP_FILE_PATH ip/$qsys_name/sysid.ip 
                     id $SYSID
+                    USE_LIVE_TIMESTAMP 1
                     "
 
 add_instance jtg_mst subsys_jtg_mst
@@ -172,7 +173,7 @@ add_instance periph subsys_periph
 
 if {$hbm_en == 1} {
 add_instance hbm subsys_hbm
-	if {$device == "AGMF039R47A1E2VC"} {
+	if {$device == "AGMF039R47A1E1VC"} {
 		add_component noc_clock_ctrl ip/qsys_top/qsys_top_noc_clock_ctrl.ip intel_noc_clock_ctrl noc_clock_ctrl
 	}
 }
@@ -586,7 +587,7 @@ connect     "clk_100.out_clk                       	hbm.clock_bridge_0_in_clk
 			address_span_extender_0.expanded_master	hbm.hps_adapter_0_altera_axi4_slave
             "
 connect_map "agilex_hps.h2f_axi_master address_span_extender_0.windowed_slave 0x00000000"
-} elseif {$device == "AGMF039R47A1E2VC"} {
+} elseif {$device == "AGMF039R47A1E1VC"} {
 connect_map	"
 			agilex_hps.mpfe_iniu_0_axi4noc hbm.hbm_fp_0_t_ch2_u0_hps_axi4noc 	0x0
 			agilex_hps.mpfe_iniu_0_axi4noc hbm.hbm_fp_0_t_ch2_u1_hps_axi4noc	0x000000040000000
@@ -618,7 +619,7 @@ export	hbm		hbm_cattrip_virtual_i	hbm_cattrip_virtual_i
 export  hbm		hbm_temp_virtual_i		hbm_temp_virtual_i
 export  hbm		uibpll_refclk			uibpll_refclk
 export  hbm		hbm_only_reset			hbm_only_reset
-	if {$device == "AGMF039R47A1E2VC"} {
+	if {$device == "AGMF039R47A1E1VC"} {
 	export	noc_clock_ctrl	refclk		noc_clock_ctrl_refclk
 	export	noc_clock_ctrl	pll_lock_o	noc_clock_ctrl_pll_lock_o
 	}

@@ -33,7 +33,7 @@ add_component_param "intel_agilex_hps agilex_hps
                      W_RESET_ACTION $watchdog_rst_act
 "
 if {$board == "devkit_fp82"} {
-	if {$device == "AGMF039R47A1E2VC"} {
+	if {$device == "AGMF039R47A1E1VC"} {
 	# need recommendation on this setup
 	set f2h_width 256 
 	set_component_param "agilex_hps FP_F2S_Width 4"

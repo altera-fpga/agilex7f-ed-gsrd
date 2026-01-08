@@ -261,7 +261,7 @@ if {$hbm_en == 1} {
 }
 }
 } else {
-	if {$device == "AGMF039R47A1E2VC" && $hbm_en == 1 } {
+	if {$device == "AGMF039R47A1E1VC" && $hbm_en == 1 } {
 		set_global_assignment -name INI_VARS "hbmfp_enable_hps=on;"
 		set_global_assignment -name INI_VARS "ASM_ENABLE_ADVANCED_DEVICES=ON"
 		set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|noc_clock_ctrl|noc_clock_ctrl|pll_inst -entity $top_name

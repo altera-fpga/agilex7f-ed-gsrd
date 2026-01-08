@@ -205,7 +205,7 @@ add_component_param "hydra traffic_generator
 					CONFIG_INTF_MODE CONFIG_INTF_MODE_REMOTE_JTAG
 					
 					"
-} elseif {$device == "AGMF039R47A1E2VC"} {
+} elseif {$device == "AGMF039R47A1E1VC"} {
 add_component_param "intel_noc_initiator noc_initiator_with_wstrb
                     IP_FILE_PATH ip/$sub_qsys_hbm/noc_initiator_with_wstrb.ip  					
 					NUM_AXI4_IF 12
@@ -225,6 +225,7 @@ add_component_param "hbm_fp hbm_fp_0
 					CTRL_CH3_CLONE_OF_ID None
 					CTRL_CH3_PSEUDO_BL8_EN 0
 					CTRL_CH3_HBM_DATA_MODE B256_ECC
+					PHY_MEMCLK_FREQ_MHZ 1600
 					"
 
 add_component_param "hydra traffic_generator
@@ -432,7 +433,7 @@ connect_map "   hps_adapter_0.altera_axi4_master		noc_initiator_with_wstrb.s0_ax
 				noc_initiator_with_wstrb.i3_axi4noc		hbm_fp_0.t_ch2_u1_axi4noc			0x0000	
 "
 
-} elseif {$device == "AGMF039R47A1E2VC"} {
+} elseif {$device == "AGMF039R47A1E1VC"} {
 connect " 	
 			core_pll.outclk0										hbm_reset_controller.clk
 			core_pll.outclk0										noc_initiator_with_wstrb.s0_axi4_aclk
@@ -559,7 +560,7 @@ export 	clock_bridge_0				in_clk 				clock_bridge_0_in_clk
 export	hps_adapter_0				altera_axi4_slave	hps_adapter_0_altera_axi4_slave				
 export	hps_adapter_0				reset_sink			hps_adapter_0_reset_sink					
 export	noc_initiator_with_wstrb	s0_axi4_aresetn		noc_initiator_with_wstrb_s0_axi4_aresetn	
-} elseif {$device == "AGMF039R47A1E2VC"} {
+} elseif {$device == "AGMF039R47A1E1VC"} {
 export	hbm_fp_0					t_ch2_u0_hps_axi4noc		hbm_fp_0_t_ch2_u0_hps_axi4noc
 export 	hbm_fp_0					t_ch2_u1_hps_axi4noc		hbm_fp_0_t_ch2_u1_hps_axi4noc
 export 	hbm_fp_0					t_ch3_u0_hps_axi4noc		hbm_fp_0_t_ch3_u0_hps_axi4noc

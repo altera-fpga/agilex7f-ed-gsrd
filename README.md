@@ -24,7 +24,7 @@ This is applicable to all designs.
   - Partial Reconfiguration
 
 ## Dependency
-* Altera Quartus Prime 25.3
+* Altera Quartus Prime 25.3.1
 * Supported Board
   - Intel Agilex 7 FPGA F-Series Transceiver-SoC Development Kit
   - Altera Agilex F-Series FPGA Development Kit
