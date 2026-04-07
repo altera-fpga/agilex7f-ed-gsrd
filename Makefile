@@ -91,10 +91,7 @@ $(strip $(2))-package-design: | $(strip $(5))
 
 .PHONY: $(strip $(2))-build
 $(strip $(2))-build: | $(strip $(1))/output_files
-	cd $(strip $(1)) && quartus_syn $(strip $(3))
-	cd $(strip $(1)) && quartus_fit $(strip $(3))
-	cd $(strip $(1)) && quartus_asm $(strip $(3))
-	cd $(strip $(1)) && quartus_sta $(strip $(3)) --mode=finalize
+	cd $(strip $(1)) && quartus_sh --flow compile $(strip $(3)) -c $(strip $(3))
 
 .PHONY: $(strip $(2))-sw-build
 $(strip $(2))-sw-build:
@@ -122,12 +119,15 @@ endef
 # Create the recipes by calling create_ghrd_target on each design
 # Agilex 7
 $(eval $(call create_legacy_ghrd_target, agilex_soc_devkit_ghrd, agi027fc-si-devkit-oobe-baseline, ghrd_agib027r31b1e1vb, generate-agi027fc-si-devkit-oobe-baseline, $(INSTALL_ROOT)/designs))
+$(eval $(call create_legacy_ghrd_target, agilex_soc_devkit_ghrd, agi027fd-si-devkit-oobe-baseline, ghrd_agib027r31b1e1vc, generate-agi027fd-si-devkit-oobe-baseline, $(INSTALL_ROOT)/designs))
 $(eval $(call create_legacy_ghrd_target, agilex_soc_devkit_ghrd, agf014eb-si-devkit-oobe-baseline, ghrd_agfb014r24b2e2v, generate-agf014eb-si-devkit-oobe-baseline, $(INSTALL_ROOT)/designs))
 $(eval $(call create_legacy_ghrd_target, agilex_soc_devkit_ghrd, agf014eb-si-devkit-nand-baseline, ghrd_agfb014r24b2e2v, generate-agf014eb-si-devkit-nand-baseline, $(INSTALL_ROOT)/designs))
+$(eval $(call create_legacy_ghrd_target, agilex_soc_devkit_ghrd, agf014eb-si-devkit-oobe-sgmii, ghrd_agfb014r24b2e2v, generate-agf014eb-si-devkit-oobe-sgmii, $(INSTALL_ROOT)/designs))
 $(eval $(call create_legacy_ghrd_target, agilex_soc_devkit_ghrd, agf014eb-si-devkit-oobe-pr, ghrd_agfb014r24b2e2v, generate-agf014eb-si-devkit-oobe-pr, $(INSTALL_ROOT)/designs))
 $(eval $(call create_legacy_ghrd_target, agilex_soc_devkit_ghrd, agm039fes-soc-devkit-oobe-baseline, ghrd_agmf039r47a1e2vr0, generate-agm039fes-soc-devkit-oobe-baseline, $(INSTALL_ROOT)/designs))
 $(eval $(call create_legacy_ghrd_target, agilex_soc_devkit_ghrd, agf023fa-soc-devkit-oobe-baseline, ghrd_agfd023r24c2e1vc, generate-agf023fa-soc-devkit-oobe-baseline, $(INSTALL_ROOT)/designs))
 $(eval $(call create_legacy_ghrd_target, agilex_soc_devkit_ghrd, agm039ea-soc-devkit-oobe-baseline, ghrd_agmf039r47a1e1vc, generate-agm039ea-soc-devkit-oobe-baseline, $(INSTALL_ROOT)/designs))
+$(eval $(call create_legacy_ghrd_target, agilex_soc_devkit_ghrd, agf014eb-si-devkit-emmc-baseline, ghrd_agfb014r24b2e2v, generate-agf014eb-si-devkit-emmc-baseline, $(INSTALL_ROOT)/designs))
 
 ###############################################################################
 #                          UTILITY TARGETS
@@ -221,14 +221,16 @@ endef
 # Create the HPS Debug SOF
 # must first call create_fsbl_sw_target
 # Agilex 7
-$(eval $(call create_fsbl_insertion_target, agilex_soc_devkit_ghrd, agf027f1es-soc-devkit-oobe-baseline, ghrd_agfb027r24c2e2v, $(AGILEX_FSBL_IHEX), hps_debug, $(INSTALL_ROOT)/designs))
 $(eval $(call create_fsbl_insertion_target, agilex_soc_devkit_ghrd, agi027fc-si-devkit-oobe-baseline, ghrd_agib027r31b1e1vb, $(AGILEX_FSBL_IHEX), hps_debug, $(INSTALL_ROOT)/designs))
+$(eval $(call create_fsbl_insertion_target, agilex_soc_devkit_ghrd, agi027fd-si-devkit-oobe-baseline, ghrd_agib027r31b1e1vc, $(AGILEX_FSBL_IHEX), hps_debug, $(INSTALL_ROOT)/designs))
 $(eval $(call create_fsbl_insertion_target, agilex_soc_devkit_ghrd, agf014eb-si-devkit-oobe-baseline, ghrd_agfb014r24b2e2v, $(AGILEX_FSBL_IHEX), hps_debug, $(INSTALL_ROOT)/designs))
 $(eval $(call create_fsbl_insertion_target, agilex_soc_devkit_ghrd, agf014eb-si-devkit-nand-baseline, ghrd_agfb014r24b2e2v, $(AGILEX_FSBL_IHEX), hps_debug, $(INSTALL_ROOT)/designs))
+$(eval $(call create_fsbl_insertion_target, agilex_soc_devkit_ghrd, agf014eb-si-devkit-oobe-sgmii, ghrd_agfb014r24b2e2v, $(AGILEX_FSBL_IHEX), hps_debug, $(INSTALL_ROOT)/designs))
 $(eval $(call create_fsbl_insertion_target, agilex_soc_devkit_ghrd, agf014eb-si-devkit-oobe-pr, ghrd_agfb014r24b2e2v, $(AGILEX_FSBL_IHEX), hps_debug, $(INSTALL_ROOT)/designs))
 $(eval $(call create_fsbl_insertion_target, agilex_soc_devkit_ghrd, agm039fes-soc-devkit-oobe-baseline, ghrd_agmf039r47a1e2vr0, $(AGILEX_FSBL_IHEX), hps_debug, $(INSTALL_ROOT)/designs))
 $(eval $(call create_fsbl_insertion_target, agilex_soc_devkit_ghrd, agf023fa-soc-devkit-oobe-baseline, ghrd_agfd023r24c2e1vc, $(AGILEX_FSBL_IHEX), hps_debug, $(INSTALL_ROOT)/designs))
 $(eval $(call create_fsbl_insertion_target, agilex_soc_devkit_ghrd, agm039ea-soc-devkit-oobe-baseline, ghrd_agmf039r47a1e1vc, $(AGILEX_FSBL_IHEX), hps_debug, $(INSTALL_ROOT)/designs))
+$(eval $(call create_fsbl_insertion_target, agilex_soc_devkit_ghrd, agf014eb-si-devkit-emmc-baseline, ghrd_agfb014r24b2e2v, $(AGILEX_FSBL_IHEX), hps_debug, $(INSTALL_ROOT)/designs))
 
 ###############################################################################
 #                           PR Persona RBF

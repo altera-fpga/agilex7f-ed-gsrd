@@ -24,18 +24,18 @@ This is applicable to all designs.
   - Partial Reconfiguration
 
 ## Dependency
-* Altera Quartus Prime 25.3.1
+* Altera Quartus Prime 26.1
 * Supported Board
-  - Intel Agilex 7 FPGA F-Series Transceiver-SoC Development Kit
+  - Altera Agilex 7 FPGA F-Series Transceiver-SoC Development Kit
   - Altera Agilex F-Series FPGA Development Kit
-  - Intel Agilex 7 FPGA I-Series Transceiver-SoC Development Kit
-  - Intel Agilex 7 FPGA M-Series Development Kit - HBM2e Edition
+  - Altera Agilex 7 FPGA I-Series Transceiver-SoC Development Kit
+  - Altera Agilex 7 FPGA M-Series Development Kit - HBM2e Edition
 
 ## Tested Platform for the GHRD Make flow
 * SUSE Linux Enterprise Server 15 SP4
 
 ## Supported Designs
-### Platform: Intel Agilex 7 FPGA F-Series Transceiver-SoC Development Kit
+### Platform: Altera Agilex 7 FPGA F-Series Transceiver-SoC Development Kit
 #### Baseline
 This design boots from SD/MMC.
 HPS EMIF ECC is enabled by default.
@@ -57,16 +57,36 @@ HPS EMIF ECC is enabled by default.
 ```bash
 make agf014eb-si-devkit-oobe-pr-all
 ```
+#### EMMC
+This design boots from EMMC.
+HPS EMIF ECC is enabled by default.
 
-### Platform: Intel Agilex 7 FPGA I-Series Transceiver-SoC Development Kit
+```bash
+make agf014eb-si-devkit-emmc-baseline-all
+```
+#### HPS Serial Gigabit Media Independent Interface (SGMII)
+This design boots from SD/MMC and enabled SGMII with HPS EMAC and Triple-Speed Ethernet Intel FPGA IP (PHY).
+HPS EMIF ECC is enabled by default.
+
+```bash
+make agf014eb-si-devkit-oobe-sgmii-all
+```
+
+### Platform: Altera Agilex 7 FPGA I-Series Transceiver-SoC Development Kit
 Note: There are several versions for this Development Kit. They can be identified with the Ordering Code in brackets.
 #### Baseline (DK-SI-AGI027FC)
 This design boots from SD/MMC.
 ```bash
 make agi027fc-si-devkit-oobe-baseline-all
 ```
+#### Baseline (DK-SI-AGI027FD)
+This design boots from SD/MMC.
+**Note: This design successfully meets Quartus compilation and timing requirements, but has not yet been validated on hardware.**
+```bash
+make agi027fd-si-devkit-oobe-baseline-all
+```
 
-### Platform: Intel Agilex 7 FPGA M-Series Development Kit - HBM2e Edition
+### Platform: Altera Agilex 7 FPGA M-Series Development Kit - HBM2e Edition
 #### Baseline (DK-DEV-AGM039FES)
 This design boots from SD/MMC.
 It also intantiates External Memory Interfaces IP for Hard Processor System to access the DDR5 memory.
@@ -86,7 +106,7 @@ make agm039ea-soc-devkit-oobe-baseline-all
 ```
 
 
-### Platform: Intel Agilex 7 FPGA F-Series Development Kit - 2F Tile Crypto
+### Platform: Altera Agilex 7 FPGA F-Series Development Kit - 2F Tile Crypto
 #### Baseline (DK-DEV-AGF023FA)
 This design boots from SD/MMC.
 HPS EMIF ECC is enabled by default.
