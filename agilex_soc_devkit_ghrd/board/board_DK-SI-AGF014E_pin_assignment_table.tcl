@@ -147,11 +147,8 @@ set fpga_gpio0_pin "V45"
 
 
 ## SGMII Related IOs
-if {$board_pwrmgt == "linear"} {
-set enet_refclk_pin "CG24"
-} else {
 set enet_refclk_pin "CN22"
-}
+
 set emac_sgmii_rxp_pin "CH21"
 set emac_sgmii_rxn_pin "CF21"
 set emac_sgmii_txp_pin "CG22"

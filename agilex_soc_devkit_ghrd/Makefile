@@ -955,6 +955,9 @@ generate-agf027f1es-soc-devkit-oobe-baseline:
 generate-agi027fc-si-devkit-oobe-baseline:
 	make generate_from_tcl_internal BOARD_TYPE=devkit_fm87 BOARD_PWRMGT=linear ENABLE_HPS_EMIF_ECC=1 FPGA_SGPIO_EN=1
 
+generate-agi027fd-si-devkit-oobe-baseline:
+	make generate_from_tcl_internal BOARD_TYPE=devkit_fm87 QUARTUS_DEVICE=AGIB027R31B1E1VC BOARD_PWRMGT=linear ENABLE_HPS_EMIF_ECC=1 FPGA_SGPIO_EN=1
+
 generate-agi027fa-si-devkit-oobe-baseline:
 	make generate_from_tcl_internal BOARD_TYPE=devkit_fm87 BOARD_PWRMGT=linear QUARTUS_DEVICE=AGIB027R31B1E1V ENABLE_HPS_EMIF_ECC=1 FPGA_SGPIO_EN=1
 
@@ -966,6 +969,12 @@ generate-agf014eb-si-devkit-oobe-baseline:
 
 generate-agf014eb-si-devkit-nand-baseline:
 	make generate_from_tcl_internal BOARD_TYPE=DK-SI-AGF014E BOARD_PWRMGT=linear DAUGHTER_CARD=devkit_dc_nand
+
+generate-agf014eb-si-devkit-emmc-baseline:
+	make generate_from_tcl_internal BOARD_TYPE=DK-SI-AGF014E BOARD_PWRMGT=linear DAUGHTER_CARD=devkit_dc_emmc
+
+generate-agf014eb-si-devkit-oobe-sgmii:
+	make generate_from_tcl_internal BOARD_TYPE=DK-SI-AGF014E BOARD_PWRMGT=linear HPS_ENABLE_SGMII=1
 
 generate-agf014eb-si-devkit-oobe-pr:
 	make generate_from_tcl_internal BOARD_TYPE=DK-SI-AGF014E BOARD_PWRMGT=linear ENABLE_HPS_EMIF_ECC=1 ENABLE_PARTIAL_RECONFIGURATION=1
@@ -984,11 +993,11 @@ generate-agf023fa-soc-devkit-oobe-baseline:
 
 generate-agm039ea-soc-devkit-oobe-baseline:
 	make generate_from_tcl_internal QUARTUS_DEVICE=AGMF039R47A1E1VC BOARD_TYPE=devkit_fp82 CONFIG_SCHEME="AVST\ X8" BOARD_PWRMGT=linear ENABLE_HPS_EMIF_ECC=0 ENABLE_WATCHDOG_RST=0 OCM_DATAWIDTH=32 HBM_EN=1 HPS_F2S_IRQ_EN=0 HPS_STM_EN=0 HPS_EMIF_EN=0
-	
+
 generate-fpga_first_revb_linear:
 	make generate_from_tcl_internal BOOTS_FIRST=fpga BOARD_TYPE=DK-SI-AGF014E BOARD_PWRMGT=linear ENABLE_HPS_EMIF_ECC=1
-	
-generate-fpga_first_pr_linear: 
+
+generate-fpga_first_pr_linear:
 	make generate_from_tcl_internal BOOTS_FIRST=fpga BOARD_TYPE=DK-SI-AGF014E BOARD_PWRMGT=linear ENABLE_HPS_EMIF_ECC=1 ENABLE_PARTIAL_RECONFIGURATION=1
 
 ################################################

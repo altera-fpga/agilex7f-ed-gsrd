@@ -170,7 +170,21 @@ set_global_assignment -name STRATIX_JTAG_USER_CODE 3
 set_global_assignment -name USE_CHECKSUM_AS_USERCODE OFF
 } else {
 if {$board == "devkit_fm86" | $board == "devkit_fm87" | $board == "DK-SI-AGF014E" | $board == "devkit_fp82" | $board == "DK-DEV-AGF023FA" && $daughter_card == "devkit_dc_oobe"} {
+
+if {$board == "DK-SI-AGF014E" && $hps_sgmii_en == 1} {
+set_global_assignment -name STRATIX_JTAG_USER_CODE "B"
+set_instance_assignment -name INPUT_TERMINATION OFF -to enet_refclk
+set_instance_assignment -name INPUT_TERMINATION OFF -to emac1_sgmii_rxp
+set_instance_assignment -name INPUT_TERMINATION OFF -to emac1_mdio
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to emac1_mdio
+set_instance_assignment -name SLEW_RATE 2 -to emac1_mdio
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to emac1_mdc
+set_instance_assignment -name SLEW_RATE 2 -to emac1_mdc
+set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to emac1_phy_rst_n
+set_instance_assignment -name SLEW_RATE 2 -to emac1_phy_rst_n
+} else {
 set_global_assignment -name STRATIX_JTAG_USER_CODE 4
+}
 set_global_assignment -name USE_CHECKSUM_AS_USERCODE OFF
 } elseif {$board == "DK-SI-AGF014E" && $daughter_card == "devkit_dc_nand"} {
 set_global_assignment -name STRATIX_JTAG_USER_CODE 1
@@ -231,6 +245,7 @@ if {$hbm_en == 1} {
 	set_instance_assignment -name NOC_GROUP NOC_GROUP_0 -to soc_inst|agilex_hps|intel_agilex_hps_inst|iniu_0|initiator_inst_0 -entity $top_name
 	set_location_assignment PIN_AP33 -to hbm_core_pll_refclk_clk
 	set_instance_assignment -name IO_STANDARD "1.2V TRUE DIFFERENTIAL SIGNALING" -to hbm_core_pll_refclk_clk -entity $top_name
+	set_instance_assignment -name INPUT_TERMINATION OFF -to hbm_core_pll_refclk_clk
 	set_location_assignment PIN_AR36 -to uibpll_refclk_clk
 	set_instance_assignment -name IO_STANDARD "1.2V TRUE DIFFERENTIAL SIGNALING" -to uibpll_refclk_clk -entity $top_name
 	set_location_assignment PIN_E38 -to hbm_only_reset_reset
@@ -310,7 +325,7 @@ if {$hbm_en == 1} {
 		set_location_assignment PIN_FC22 -to noc_clock_ctrl_pll_lock_o_pll_lock_o
 		set_instance_assignment -name IO_STANDARD "1.2-V" -to noc_clock_ctrl_pll_lock_o_pll_lock_o
 		set_instance_assignment -name SLEW_RATE 1 -to noc_clock_ctrl_pll_lock_o_pll_lock_o
-
+		set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to noc_clock_ctrl_pll_lock_o_pll_lock_o
 }
 }
 
@@ -588,16 +603,18 @@ set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRAT
 }
 
 if {$board == "devkit_fp82" && $hps_emif_en == 1} {
-set_instance_assignment -name SLEW_RATE 0 -to fpga_clk_100[0]
+set_instance_assignment -name SLEW_RATE 0 -to fpga_clk_100
 set_instance_assignment -name SLEW_RATE 0 -to emif_hps_noc_refclk_clk
 set_instance_assignment -name IO_STANDARD "1.8-V" -to emif_hps_noc_refclk_clk
-set_instance_assignment -name SLEW_RATE 0 -to fpga_reset_n[0]
+set_instance_assignment -name SLEW_RATE 0 -to fpga_reset_n
 set_instance_assignment -name SLEW_RATE 0 -to emif_hps_oct_oct_rzqin
 set_instance_assignment -name IO_STANDARD "1.1-V" -to emif_hps_oct_oct_rzqin
 set_instance_assignment -name IO_STANDARD "1.1-V" -to emif_hps_noc_pll_lock_o_pll_lock_o
 set_instance_assignment -name SLEW_RATE 0 -to emif_hps_noc_pll_lock_o_pll_lock_o
 set_instance_assignment -name OUTPUT_TERMINATION "SERIES 40 OHM WITHOUT CALIBRATION" -to emif_hps_noc_pll_lock_o_pll_lock_o
 }
+
+set_instance_assignment -name INPUT_TERMINATION OFF -to fpga_clk_100
 
 # Convert timing failures to errors
 set_global_assignment -name PROMOTE_WARNING_TO_ERROR 332148

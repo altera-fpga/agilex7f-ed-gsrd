@@ -10,7 +10,7 @@ The GHRD is part of the Golden System Reference Design (GSRD), which provides a 
    - $ `make sof` or $ `make all`
 
 ## Supported Designs
-### Platform: Intel Agilex 7 FPGA F-Series Transceiver-SoC Development Kit
+### Platform: Altera Agilex 7 FPGA F-Series Transceiver-SoC Development Kit
 There are **4 LED outputs**, **4 DIP switch inputs** and **4 push-button inputs** on the Development Kit, which are connected fpga pin.
 #### Baseline
 This design boots from SD/MMC.
@@ -30,8 +30,22 @@ HPS EMIF ECC is enabled by default.
 ```bash
 make generate-agf014eb-si-devkit-oobe-pr
 ```
+#### EMMC
+This design boots from EMMC.
+HPS EMIF ECC is enabled by default.
 
-### Platform: Intel Agilex 7 FPGA I-Series Transceiver-SoC Development Kit
+```bash
+make generate-agf014eb-si-devkit-emmc-baseline
+```
+#### HPS Serial Gigabit Media Independent Interface (SGMII)
+This design boots from SD/MMC and enabled SGMII with HPS EMAC and Triple-Speed Ethernet Intel FPGA IP (PHY).
+HPS EMIF ECC is enabled by default.
+
+```bash
+make generate-agf014eb-si-devkit-oobe-sgmii
+```
+
+### Platform: Altera Agilex 7 FPGA I-Series Transceiver-SoC Development Kit
 There are **8 LED outputs**, **8 DIP switch inputs** and **2 push-button inputs** on the Development Kit, which are connected fpga pin.<br>
 Note: There are several versions for this Development Kit. They can be identified with the Ordering Code in brackets.
 #### Baseline (DK-SI-AGI027FC)
@@ -40,8 +54,15 @@ HPS EMIF ECC is enabled by default.
 ```bash
 make generate-agi027fc-si-devkit-oobe-baseline
 ```
+#### Baseline (DK-SI-AGI027FD)
+This design boots from SD/MMC.
+HPS EMIF ECC is enabled by default.
+**Note: This design successfully meets Quartus compilation and timing requirements, but has not yet been validated on hardware.**
+```bash
+make generate-agi027fd-si-devkit-oobe-baseline
+```
 
-### Platform: Intel Agilex 7 FPGA M-Series Development Kit - HBM2e Edition
+### Platform: Altera Agilex 7 FPGA M-Series Development Kit - HBM2e Edition
 There are **4 LED outputs** on the Development Kit, which are connected fpga pin.
 #### Baseline (DK-DEV-AGM039FES)
 This design boots from SD/MMC.
@@ -61,7 +82,7 @@ HBM ECC is **enabled** for this design.
 make agm039ea-soc-devkit-oobe-baseline-all
 ```
 
-### Platform: Intel Agilex 7 FPGA F-Series Development Kit - 2F Tile Crypto
+### Platform: Altera Agilex 7 FPGA F-Series Development Kit - 2F Tile Crypto
 There are **4 LED outputs** on the Development Kit, which are connected fpga pin.
 #### Baseline (DK-DEV-AGF023FA)
 This design boots from SD/MMC.
@@ -73,7 +94,7 @@ make generate-agf023fa-soc-devkit-oobe-baseline
 ## GHRD Overview
 
 ### Hard Processor System (HPS)
-The GHRD HPS configuration matches the board schematic. Refer to [Agilex 7 Hard Processor System Technical Reference Manual](https://www.intel.com/content/www/us/en/docs/programmable/683567/current) and [Intel Agilex 7 Hard Processor System Component Reference Manual](https://www.intel.com/content/www/us/en/docs/programmable/683581/current) for more information on HPS configuration.
+The GHRD HPS configuration matches the board schematic. Refer to [Agilex 7 Hard Processor System Technical Reference Manual](https://www.intel.com/content/www/us/en/docs/programmable/683567/current) and [Agilex 7 Hard Processor System Component Reference Manual](https://www.intel.com/content/www/us/en/docs/programmable/683581/current) for more information on HPS configuration.
 
 ### HPS External Memory Interfaces (EMIF)
 The GHRD HPS EMIF configuration matches the board schematic. Refer to
@@ -82,7 +103,7 @@ The GHRD HPS EMIF configuration matches the board schematic. Refer to
 ### HPS-to-FPGA Address Map for all designs
 The MPU region provide windows of 4 GB into the FPGA slave address space. The lower 1.5 GB of this space is mapped to two separate addresses - firstly from 0x8000_0000 to 0xDFFF_FFFF and secondly from 0x20_0000_0000 to 0x20_5FFF_FFFF. The following table lists the offset of each peripheral from the HPS-to-FPGA bridge in the FPGA portion of the SoC.
 
-Refer to [Intel Agilex 7 Hard Processor System Address Map and Register Definitions](https://www.intel.com/content/www/us/en/programmable/hps/agilex7/hps.html) for details.
+Refer to [Agilex 7 Hard Processor System Address Map and Register Definitions](https://www.intel.com/content/www/us/en/programmable/hps/agilex7/hps.html) for details.
 
 | Peripheral | Address Offset | Size (bytes) | Attribute |
 | :-- | :-- | :-- | :-- |
