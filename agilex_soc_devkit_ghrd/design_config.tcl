@@ -15,7 +15,7 @@
 set QSYS_NAME qsys_top
 set PROJECT_NAME ghrd_agilex
 set TOP_NAME ghrd_agilex_top
-set DEVICE_FAMILY "Agilex"
+set DEVICE_FAMILY "Agilex 7"
 set DEVICE AGFB014R24A3E3VR0
 
 ##### features of GHRD enabling #####

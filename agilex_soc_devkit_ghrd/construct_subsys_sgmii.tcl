@@ -81,17 +81,17 @@ connect "sgmii_csr_clk.out_clk          sgmii_rst_in.clk
          sgmii_csr_clk.out_clk          gmii_sgmii_adapter_0.peri_clock
          sgmii_rst_in.out_reset         gmii_sgmii_adapter_0.peri_reset
          emac_splitter_0.hps_gmii       gmii_sgmii_adapter_0.hps_gmii
-         gmii_sgmii_adapter_0.pcs_transmit_reset    eth_tse_0.pcs_transmit_reset_connection
-         gmii_sgmii_adapter_0.pcs_receive_reset     eth_tse_0.pcs_receive_reset_connection
-         eth_tse_0.pcs_transmit_clock_connection    gmii_sgmii_adapter_0.pcs_transmit_clock
-         eth_tse_0.pcs_receive_clock_connection     gmii_sgmii_adapter_0.pcs_receive_clock
+         gmii_sgmii_adapter_0.pcs_transmit_reset    eth_tse_0.reset_tx_clk
+         gmii_sgmii_adapter_0.pcs_receive_reset     eth_tse_0.reset_rx_clk
+         eth_tse_0.tx_clk    gmii_sgmii_adapter_0.pcs_transmit_clock
+         eth_tse_0.rx_clk     gmii_sgmii_adapter_0.pcs_receive_clock
          gmii_sgmii_adapter_0.pcs_clock_enable      eth_tse_0.clock_enable_connection
          gmii_sgmii_adapter_0.pcs_gmii              eth_tse_0.gmii_connection
          gmii_sgmii_adapter_0.pcs_mii               eth_tse_0.mii_connection
          
-         sgmii_clk_125.out_clk          eth_tse_0.pcs_ref_clk_clock_connection
-         sgmii_csr_clk.out_clk          eth_tse_0.control_port_clock_connection
-         sgmii_rst_in.out_reset         eth_tse_0.reset_connection
+         sgmii_clk_125.out_clk          eth_tse_0.ref_clk
+         sgmii_csr_clk.out_clk          eth_tse_0.clk
+         sgmii_rst_in.out_reset         eth_tse_0.reset
          
          sgmii_csr_clk.out_clk          sgmii_debug_status_pio.clk
          sgmii_rst_in.out_reset         sgmii_debug_status_pio.reset
@@ -119,7 +119,7 @@ export emac_splitter_0 ptp             ptp
 
 export eth_tse_0       sgmii_status_connection      sgmii_status
 export eth_tse_0       status_led_connection        status_led
-export eth_tse_0       serdes_control_connection    serdes_control
+export eth_tse_0       rx_recovclkout               serdes_control
 export eth_tse_0       lvds_tx_pll_locked           lvds_tx_pll_locked
 export eth_tse_0       serial_connection            serial_connection
 export sgmii_debug_status_pio   external_connection     sgmii_debug_status_pio
