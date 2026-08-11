@@ -86,12 +86,13 @@ $(strip $(2))-generate-design: prepare-tools | $(strip $(1))/output_files
 	$(MAKE) -C $(strip $(1)) $(strip $(4))
 
 .PHONY: $(strip $(2))-package-design
-$(strip $(2))-package-design: | $(strip $(5))
+$(strip $(2))-package-design: $(strip $(2))-generate-design | $(strip $(5))
 	cd $(strip $(1)) && zip -r $(strip $(5))/$(subst -,_,$(strip $(2))).zip * -x .gitignore "output_files/*" "qdb/*" "dni/*" "tmp-clearbox/*"
 
 .PHONY: $(strip $(2))-build
-$(strip $(2))-build: | $(strip $(1))/output_files
+$(strip $(2))-build: $(strip $(2))-generate-design | $(strip $(1))/output_files
 	cd $(strip $(1)) && quartus_sh --flow compile $(strip $(3)) -c $(strip $(3))
+	@test -f $(strip $(1))/output_files/$(strip $(3)).sof && echo "$(strip $(1))/output_files/$(strip $(3)).sof found after build flow!" || (echo "Error: $(strip $(1))/output_files/$(strip $(3)).sof not found after build flow!" && exit 1)
 
 .PHONY: $(strip $(2))-sw-build
 $(strip $(2))-sw-build:
@@ -103,6 +104,10 @@ $(strip $(2))-test:
 $(strip $(2))-install-sof: | $(strip $(5))
 	cp -f $(strip $(1))/output_files/$(strip $(3)).sof $(strip $(5))/$(subst -,_,$(strip $(2))).sof
 
+.PHONY: $(strip $(2))-install-core-rbf
+$(strip $(2))-install-core-rbf: $(strip $(1))/output_files/$(strip $(3)).sof | $(strip $(5))
+	quartus_pfg -c $(strip $(1))/output_files/$(strip $(3)).sof $(strip $(1))/output_files/ghrd.rbf -o hps=ON -o hps_core_only=ON
+	cp -f $(strip $(1))/output_files/ghrd.rbf $(strip $(5))/ghrd.core.rbf
 
 .PHONY: $(strip $(2))-all
 $(strip $(2))-all:
@@ -113,6 +118,18 @@ $(strip $(2))-all:
 	$(MAKE) $(strip $(2))-sw-build
 	$(MAKE) $(strip $(2))-test
 	$(MAKE) $(strip $(2))-install-sof
+	$(MAKE) $(strip $(2))-install-core-rbf
+
+# base .sof file rule — if missing, run generate-design then build; guarded so duplicate revision names don't cause warnings
+ifndef $(strip $(1))_$(strip $(3))_sof_rule_defined
+$(strip $(1))_$(strip $(3))_sof_rule_defined := 1
+
+$(strip $(1))/output_files/$(strip $(3)).sof: | $(strip $(1))/output_files
+	$(MAKE) $(strip $(2))-generate-design
+	$(MAKE) $(strip $(2))-package-design
+	$(MAKE) $(strip $(2))-prep
+	$(MAKE) $(strip $(2))-build
+endif
 
 endef
 

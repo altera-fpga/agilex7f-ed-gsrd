@@ -94,16 +94,16 @@ make generate-agf023fa-soc-devkit-oobe-baseline
 ## GHRD Overview
 
 ### Hard Processor System (HPS)
-The GHRD HPS configuration matches the board schematic. Refer to [Agilex 7 Hard Processor System Technical Reference Manual](https://www.intel.com/content/www/us/en/docs/programmable/683567/current) and [Agilex 7 Hard Processor System Component Reference Manual](https://www.intel.com/content/www/us/en/docs/programmable/683581/current) for more information on HPS configuration.
+The GHRD HPS configuration matches the board schematic. Refer to [Agilex 7 Hard Processor System Technical Reference Manual](https://docs.altera.com/r/docs/683567/current) and [Agilex 7 Hard Processor System Component Reference Manual](https://docs.altera.com/r/docs/683581/current) for more information on HPS configuration.
 
 ### HPS External Memory Interfaces (EMIF)
 The GHRD HPS EMIF configuration matches the board schematic. Refer to
-[External Memory Interfaces Agilex 7 F-Series and I-Series FPGA IP User Guide](https://www.intel.com/content/www/us/en/docs/programmable/683216/current) for more information on HPS EMIF configuration.
+[External Memory Interfaces Agilex 7 F-Series and I-Series FPGA IP User Guide](https://docs.altera.com/r/docs/683216/current) for more information on HPS EMIF configuration.
 
 ### HPS-to-FPGA Address Map for all designs
 The MPU region provide windows of 4 GB into the FPGA slave address space. The lower 1.5 GB of this space is mapped to two separate addresses - firstly from 0x8000_0000 to 0xDFFF_FFFF and secondly from 0x20_0000_0000 to 0x20_5FFF_FFFF. The following table lists the offset of each peripheral from the HPS-to-FPGA bridge in the FPGA portion of the SoC.
 
-Refer to [Agilex 7 Hard Processor System Address Map and Register Definitions](https://www.intel.com/content/www/us/en/programmable/hps/agilex7/hps.html) for details.
+Refer to [Agilex 7 Hard Processor System Address Map and Register Definitions](https://docs.altera.com/v/u/resources/747593/agilextm-7-fpga-hard-processor-system-hps-address-map-and-definitions-register-map) for details.
 
 | Peripheral | Address Offset | Size (bytes) | Attribute |
 | :-- | :-- | :-- | :-- |
@@ -149,10 +149,10 @@ An alternate revision of the project (persona 1) contains the following in the P
 ### JTAG master interfaces
 The GHRD JTAG master interfaces allows you to access peripherals in the FPGA with System Console, through the JTAG master module. This access does not rely on HPS software drivers.
 
-Refer to this [Guide](https://www.intel.com/content/www/us/en/docs/programmable/683819/current/analyzing-and-debugging-designs-with-84752.html) for information about system console.
+Refer to this [Guide](https://docs.altera.com/r/docs/683819/26.1/quartus-prime-pro-edition-user-guide-debug-tools/analyzing-and-debugging-designs-with-system-console) for information about system console.
 
 ### Interrupt Num
-The Interrupt Num in this readme are FPGA IRQ. They have offset of 17 when mapped to Generic Interrupt Controller (GIC) in device tree structure(dts). Refer to F2H FPGA Interrupt[0] in [GIC Interrupt Map for the SoC HPS](intel.com/content/www/us/en/docs/programmable/683567/24-3/hard-processor-system-technical-reference.html).
+The Interrupt Num in this readme are FPGA IRQ. They have offset of 17 when mapped to Generic Interrupt Controller (GIC) in device tree structure(dts). Refer to F2H FPGA Interrupt[0] in [GIC Interrupt Map for the SoC HPS](https://docs.altera.com/r/docs/683567/25.3.1/agilextm-7-hard-processor-system-technical-reference-manual/gic-interrupt-map-for-the-soc-hps).
 Number 49 is shown for F2H FPGA Interrupt[0] as the first 32 IRQ is reserved. (49 - 32 = 17).
 
 ## Binaries location
