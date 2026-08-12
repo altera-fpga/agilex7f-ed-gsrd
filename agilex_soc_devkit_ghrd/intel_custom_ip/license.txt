@@ -1,10 +1,7 @@
 ================================================================================
-The IPs supported in this released folder "intel_custom_ip" is Licensed 
-for use under the Intel Quartus Prime and Intel FPGA IP License Agreement 
+The IPs supported in this released folder "intel_custom_ip" is Licensed
+for use under the Intel Quartus Prime and Intel FPGA IP License Agreement
 unless otherwise specified in the file header. 
-
-Refer to http://fpgasoftware.intel.com/eula for more information about 
-Intel Quartus Prime and Intel FPGA IP License Agreement.
 ================================================================================
 
 QUARTUS PRIME AND INTEL FPGA IP LICENSE AGREEMENT, VERSION 20.3
