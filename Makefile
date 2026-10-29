@@ -36,12 +36,12 @@ PIP_PROXY := --proxy $(https_proxy)
 else
 PIP_PROXY :=
 endif
-VENV_PIP_INSTALL := $(VENV_PIP) install $(PIP_PROXY) --timeout 90 --trusted-host pypi.org --trusted-host files.pythonhosted.org
+VENV_PIP_INSTALL := $(VENV_PIP) install $(PIP_PROXY) --no-cache-dir --timeout 120 --retries 20 --trusted-host pypi.org --trusted-host files.pythonhosted.org
 
 ##############################################################################
 # Set default goal before any targets. The default goal here is "test"
 ##############################################################################
-DEFAULT_TARGET := help
+DEFAULT_TARGET := all
 
 .DEFAULT_GOAL := default
 .PHONY: default
@@ -56,102 +56,159 @@ default: $(DEFAULT_TARGET)
 ###############################################################################
 #                          Design Targets
 ###############################################################################
-%/output_files:
-	mkdir -p $@
-
-$(INSTALL_ROOT) $(INSTALL_ROOT)/designs $(INSTALL_ROOT)/not_shipped:
-	mkdir -p $@
 
 # Initialize variables
 ALL_TARGET_STEM_NAMES =
+ALL_PRE_PREP_TARGETS =
+ALL_PREP_TARGETS =
+ALL_IP_UPGRADE_TARGETS =
+ALL_GENERATE_DESIGN_TARGETS =
+ALL_PACKAGE_DESIGN_TARGETS =
+ALL_VALIDATE_README_METADATA_TARGETS =
+ALL_BUILD_TARGETS =
+ALL_TEST_TARGETS =
+ALL_FUNCTIONAL_SIM_TARGETS =
+ALL_INSTALL_TARGETS =
+ALL_CLEAN_TARGETS =
+ALL_DEV_CLEAN_TARGETS =
 ALL_TARGET_ALL_NAMES =
 
+ALL_SW_TARGET_STEM_NAMES =
+ALL_SW_BUILD_TARGETS =
+ALL_SW_INSTALL_TARGETS =
+
 # Define function to create targets
-# create_legacy_ghrd_target
-# $(1) - Base directory name. i.e. agilex_soc_devkit_ghrd
-# $(2) - Target name. i.e. agf027f1es-soc-devkit-oobe-baseline. Format is <devkit>-<daughter_card>-<name>
-# $(3) - Revision name. i.e. ghrd_agfb027r24c2e2v
-# $(4) - Config target. i.e. generate-agf027f1es-soc-devkit-oobe-baseline
-# $(5) - Install location. i.e. $(INSTALL_ROOT)/designs
-define create_legacy_ghrd_target
-ALL_TARGET_STEM_NAMES += $(strip $(2))
-ALL_TARGET_ALL_NAMES += $(strip $(2))-all
+define create_targets_on_subdir
+ALL_TARGET_STEM_NAMES += $(addprefix $(strip $(1))-,$(strip $(3)))
+ALL_PRE_PREP_TARGETS += $(addsuffix -pre-prep,$(addprefix $(strip $(1))-,$(strip $(3))))
+ALL_PREP_TARGETS += $(addsuffix -prep,$(addprefix $(strip $(1))-,$(strip $(3))))
+ALL_IP_UPGRADE_TARGETS += $(addsuffix -ip-upgrade,$(addprefix $(strip $(1))-,$(strip $(3))))
+ALL_GENERATE_DESIGN_TARGETS += $(addsuffix -generate-design,$(addprefix $(strip $(1))-,$(strip $(3))))
+ALL_PACKAGE_DESIGN_TARGETS += $(addsuffix -package-design,$(addprefix $(strip $(1))-,$(strip $(3))))
+ALL_VALIDATE_README_METADATA_TARGETS += $(addsuffix -validate-readme-metadata,$(addprefix $(strip $(1))-,$(strip $(3))))
+ALL_BUILD_TARGETS += $(addsuffix -build,$(addprefix $(strip $(1))-,$(strip $(3))))
+ALL_TEST_TARGETS += $(addsuffix -test,$(addprefix $(strip $(1))-,$(strip $(3))))
+ALL_INSTALL_TARGETS += $(addsuffix -install,$(addprefix $(strip $(1))-,$(strip $(3))))
+ALL_CLEAN_TARGETS += $(addsuffix -clean,$(addprefix $(strip $(1))-,$(strip $(3))))
+ALL_DEV_CLEAN_TARGETS += $(addsuffix -dev-clean,$(addprefix $(strip $(1))-,$(strip $(3))))
+ALL_TARGET_ALL_NAMES += $(addsuffix -all,$(addprefix $(strip $(1))-,$(strip $(3))))
 
-.PHONY: $(strip $(2))-prep
-$(strip $(2))-prep: | $(strip $(1))/output_files
-	cd $(strip $(1)) && quartus_ipgenerate $(strip $(3)) -c $(strip $(3)) --synthesis=verilog
+# Auto-detect default SW target based on platform name for -all target: emmc→software-yocto_linux_emmc, nand→software-yocto_linux_nand, else→software-yocto_linux_sd
+SW_TARGET_FOR_$(strip $(1))-$(strip $(3)) = $(if $(findstring -emmc,$(strip $(1))),software-yocto_linux_emmc,$(if $(findstring -nand,$(strip $(1))),software-yocto_linux_nand,software-yocto_linux_sd))
 
-.PHONY: $(strip $(2))-generate-design
-$(strip $(2))-generate-design: prepare-tools | $(strip $(1))/output_files
-	$(MAKE) -C $(strip $(1)) $(strip $(4))
 
-.PHONY: $(strip $(2))-package-design
-$(strip $(2))-package-design: $(strip $(2))-generate-design | $(strip $(5))
-	cd $(strip $(1)) && zip -r $(strip $(5))/$(subst -,_,$(strip $(2))).zip * -x .gitignore "output_files/*" "qdb/*" "dni/*" "tmp-clearbox/*"
+$(strip $(1))-%-pre-prep : venv
+	$(MAKE) --no-print-directory -C $(strip $(2)) $$*-pre-prep
 
-.PHONY: $(strip $(2))-build
-$(strip $(2))-build: $(strip $(2))-generate-design | $(strip $(1))/output_files
-	cd $(strip $(1)) && quartus_sh --flow compile $(strip $(3)) -c $(strip $(3))
-	@test -f $(strip $(1))/output_files/$(strip $(3)).sof && echo "$(strip $(1))/output_files/$(strip $(3)).sof found after build flow!" || (echo "Error: $(strip $(1))/output_files/$(strip $(3)).sof not found after build flow!" && exit 1)
+$(strip $(1))-%-prep : venv
+	$(MAKE) --no-print-directory -C $(strip $(2)) $$*-prep
 
-.PHONY: $(strip $(2))-sw-build
-$(strip $(2))-sw-build:
+$(strip $(1))-%-ip-upgrade : venv
+	$(MAKE) --no-print-directory -C $(strip $(2)) $$*-ip-upgrade
 
-.PHONY: $(strip $(2))-test
-$(strip $(2))-test:
+$(strip $(1))-%-generate-design : venv
+	$(MAKE) --no-print-directory -C $(strip $(2)) $$*-generate-design
 
-.PHONY: $(strip $(2))-install-sof
-$(strip $(2))-install-sof: | $(strip $(5))
-	cp -f $(strip $(1))/output_files/$(strip $(3)).sof $(strip $(5))/$(subst -,_,$(strip $(2))).sof
+$(strip $(1))-%-package-design :
+	$(MAKE) --no-print-directory -C $(strip $(2)) $$*-package-design INSTALL_ROOT_DESIGNS=$(INSTALL_ROOT)/$(strip $(4))/designs INSTALL_ROOT_BINARIES=$(INSTALL_ROOT)/$(strip $(4))/binaries/$(strip $(1)) INSTALL_ROOT_ARTIFACTS=$(INSTALL_ROOT)/artifacts/$(strip $(1))
 
-.PHONY: $(strip $(2))-install-core-rbf
-$(strip $(2))-install-core-rbf: $(strip $(1))/output_files/$(strip $(3)).sof | $(strip $(5))
-	quartus_pfg -c $(strip $(1))/output_files/$(strip $(3)).sof $(strip $(1))/output_files/ghrd.rbf -o hps=ON -o hps_core_only=ON
-	cp -f $(strip $(1))/output_files/ghrd.rbf $(strip $(5))/ghrd.core.rbf
+$(strip $(1))-%-validate-readme-metadata :
+	$(MAKE) --no-print-directory -C $(strip $(2)) $$*-validate-readme-metadata
 
-.PHONY: $(strip $(2))-all
-$(strip $(2))-all:
-	$(MAKE) $(strip $(2))-generate-design
-	$(MAKE) $(strip $(2))-package-design
-	$(MAKE) $(strip $(2))-prep
-	$(MAKE) $(strip $(2))-build
-	$(MAKE) $(strip $(2))-sw-build
-	$(MAKE) $(strip $(2))-test
-	$(MAKE) $(strip $(2))-install-sof
-	$(MAKE) $(strip $(2))-install-core-rbf
+$(strip $(1))-%-build :
+	$(MAKE) --no-print-directory -C $(strip $(2)) $$*-build
 
-# base .sof file rule — if missing, run generate-design then build; guarded so duplicate revision names don't cause warnings
-ifndef $(strip $(1))_$(strip $(3))_sof_rule_defined
-$(strip $(1))_$(strip $(3))_sof_rule_defined := 1
+$(strip $(1))-%-build-sw :
+	$(MAKE) --no-print-directory -C $(strip $(2)) $$*-build-sw
 
-$(strip $(1))/output_files/$(strip $(3)).sof: | $(strip $(1))/output_files
-	$(MAKE) $(strip $(2))-generate-design
-	$(MAKE) $(strip $(2))-package-design
-	$(MAKE) $(strip $(2))-prep
-	$(MAKE) $(strip $(2))-build
-endif
+$(strip $(1))-%-install-sw :
+	$(MAKE) --no-print-directory -C $(strip $(2)) $$*-install-sw INSTALL_ROOT_DESIGNS=$(INSTALL_ROOT)/$(strip $(4))/designs INSTALL_ROOT_BINARIES=$(INSTALL_ROOT)/$(strip $(4))/binaries/$(strip $(1)) INSTALL_ROOT_ARTIFACTS=$(INSTALL_ROOT)/artifacts/$(strip $(1))
 
+$(strip $(1))-%-test :
+	$(MAKE) --no-print-directory -C $(strip $(2)) $$*-test
+
+$(strip $(1))-%-install :
+	$(MAKE) --no-print-directory -C $(strip $(2)) $$*-install INSTALL_ROOT_DESIGNS=$(INSTALL_ROOT)/$(strip $(4))/designs INSTALL_ROOT_BINARIES=$(INSTALL_ROOT)/$(strip $(4))/binaries/$(strip $(1)) INSTALL_ROOT_ARTIFACTS=$(INSTALL_ROOT)/artifacts/$(strip $(1))
+
+$(strip $(1))-%-clean :
+	$(MAKE) --no-print-directory -C $(strip $(2)) $$*-clean
+
+$(strip $(1))-%-clean-sw :
+	$(MAKE) --no-print-directory -C $(strip $(2)) $$*-clean-sw
+
+$(strip $(1))-%-dev-clean :
+	$(MAKE) --no-print-directory -C $(strip $(2)) $$*-dev-clean
+
+.PHONY: $(addsuffix -all,$(addprefix $(strip $(1))-,$(strip $(3))))
+$(addsuffix -all,$(addprefix $(strip $(1))-,$(strip $(3)))): venv
+	$(MAKE) $(addsuffix -pre-prep,$(addprefix $(strip $(1))-,$(strip $(3))))
+	$(MAKE) $(addsuffix -generate-design,$(addprefix $(strip $(1))-,$(strip $(3))))
+	$(MAKE) $(addsuffix -package-design,$(addprefix $(strip $(1))-,$(strip $(3))))
+	$(MAKE) $(addsuffix -prep,$(addprefix $(strip $(1))-,$(strip $(3))))
+	$(MAKE) $(addsuffix -build,$(addprefix $(strip $(1))-,$(strip $(3))))
+	$(MAKE) $(addsuffix -functional-sim,$(addprefix $(strip $(1))-,$(strip $(3))))
+	$(MAKE) $(addsuffix -test,$(addprefix $(strip $(1))-,$(strip $(3))))
+	$(MAKE) $(addsuffix -install,$(addprefix $(strip $(1))-,$(strip $(3))))
+	$(MAKE) $(strip $(1))-$(strip $(3))-$$(SW_TARGET_FOR_$(strip $(1))-$(strip $(3)))-build-sw
+	$(MAKE) $(strip $(1))-$(strip $(3))-$$(SW_TARGET_FOR_$(strip $(1))-$(strip $(3)))-install-sw
 endef
 
-# Create the recipes by calling create_ghrd_target on each design
-# Agilex 7
-$(eval $(call create_legacy_ghrd_target, agilex_soc_devkit_ghrd, agi027fc-si-devkit-oobe-baseline, ghrd_agib027r31b1e1vb, generate-agi027fc-si-devkit-oobe-baseline, $(INSTALL_ROOT)/designs))
-$(eval $(call create_legacy_ghrd_target, agilex_soc_devkit_ghrd, agi027fd-si-devkit-oobe-baseline, ghrd_agib027r31b1e1vc, generate-agi027fd-si-devkit-oobe-baseline, $(INSTALL_ROOT)/designs))
-$(eval $(call create_legacy_ghrd_target, agilex_soc_devkit_ghrd, agf014eb-si-devkit-oobe-baseline, ghrd_agfb014r24b2e2v, generate-agf014eb-si-devkit-oobe-baseline, $(INSTALL_ROOT)/designs))
-$(eval $(call create_legacy_ghrd_target, agilex_soc_devkit_ghrd, agf014eb-si-devkit-nand-baseline, ghrd_agfb014r24b2e2v, generate-agf014eb-si-devkit-nand-baseline, $(INSTALL_ROOT)/designs))
-$(eval $(call create_legacy_ghrd_target, agilex_soc_devkit_ghrd, agf014eb-si-devkit-oobe-sgmii, ghrd_agfb014r24b2e2v, generate-agf014eb-si-devkit-oobe-sgmii, $(INSTALL_ROOT)/designs))
-$(eval $(call create_legacy_ghrd_target, agilex_soc_devkit_ghrd, agf014eb-si-devkit-oobe-pr, ghrd_agfb014r24b2e2v, generate-agf014eb-si-devkit-oobe-pr, $(INSTALL_ROOT)/designs))
-$(eval $(call create_legacy_ghrd_target, agilex_soc_devkit_ghrd, agm039fes-soc-devkit-oobe-baseline, ghrd_agmf039r47a1e2vr0, generate-agm039fes-soc-devkit-oobe-baseline, $(INSTALL_ROOT)/designs))
-$(eval $(call create_legacy_ghrd_target, agilex_soc_devkit_ghrd, agf023fa-soc-devkit-oobe-baseline, ghrd_agfd023r24c2e1vc, generate-agf023fa-soc-devkit-oobe-baseline, $(INSTALL_ROOT)/designs))
-$(eval $(call create_legacy_ghrd_target, agilex_soc_devkit_ghrd, agm039ea-soc-devkit-oobe-baseline, ghrd_agmf039r47a1e1vc, generate-agm039ea-soc-devkit-oobe-baseline, $(INSTALL_ROOT)/designs))
-$(eval $(call create_legacy_ghrd_target, agilex_soc_devkit_ghrd, agf014eb-si-devkit-emmc-baseline, ghrd_agfb014r24b2e2v, generate-agf014eb-si-devkit-emmc-baseline, $(INSTALL_ROOT)/designs))
+# Create targets per SW project on each subdir
+define create_sw_targets_on_subdir
+ALL_SW_TARGET_STEM_NAMES += $(addprefix $(strip $(1))-,$(strip $(3)))
+ALL_SW_BUILD_TARGETS += $(addsuffix -build-sw,$(addprefix $(strip $(1))-,$(strip $(3))))
+ALL_SW_INSTALL_TARGETS += $(addsuffix -install-sw,$(addprefix $(strip $(1))-,$(strip $(3))))
+
+$(strip $(1))-%-build-sw :
+	$(MAKE) --no-print-directory -C $(strip $(2)) $$*-build-sw INSTALL_ROOT_DESIGNS=$(INSTALL_ROOT)/$(strip $(4))/designs INSTALL_ROOT_BINARIES=$(INSTALL_ROOT)/$(strip $(4))/binaries/$(strip $(1)) INSTALL_ROOT_ARTIFACTS=$(INSTALL_ROOT)/artifacts/$(strip $(1))
+
+$(strip $(1))-%-install-sw :
+	$(MAKE) --no-print-directory -C $(strip $(2)) $$*-install-sw INSTALL_ROOT_DESIGNS=$(INSTALL_ROOT)/$(strip $(4))/designs INSTALL_ROOT_BINARIES=$(INSTALL_ROOT)/$(strip $(4))/binaries/$(strip $(1)) INSTALL_ROOT_ARTIFACTS=$(INSTALL_ROOT)/artifacts/$(strip $(1))
+endef
+
+# Create function sim targets per project on each subdir
+define create_sim_targets_on_subdir
+ALL_FUNCTIONAL_SIM_TARGETS += $(addprefix $(strip $(1))-,$(strip $(3)))
+
+$(strip $(1))-% :
+	$(MAKE) --no-print-directory -C $(strip $(2)) $$*
+endef
+
+# Dummy SW build targets
+.PHONY: dummy-build-sw
+dummy-build-sw:
+
+.PHONY: dummy-install-sw
+install-build-sw:
+
+
+# Create rules for subdirs
+TARGET_SUBDIR :=
+-include platform_config.mk
+
+# Create the subdir recipes by recursively calling the create_targets_on_subdir on each TARGET_SUBDIR
+define create_subdir_targets
+$(foreach target, $(shell make  --no-print-directory -q -C $(1) print-targets), $(eval $(call create_targets_on_subdir, $(1),$(1),$(target),$(NOOP))))
+endef
+$(foreach subdir,$(TARGET_SUBDIR),$(eval $(call create_subdir_targets,$(subdir))))
+
+define create_subdir_sw_targets
+$(foreach target, $(shell make  --no-print-directory -q -C $(1) print-sw-targets), $(eval $(call create_sw_targets_on_subdir, $(1),$(1),$(target),$(NOOP))))
+endef
+$(foreach subdir,$(TARGET_SUBDIR),$(eval $(call create_subdir_sw_targets,$(subdir))))
+
+define create_subdir_sim_targets
+$(foreach target, $(shell make  --no-print-directory -q -C $(1) print-sim-targets), $(eval $(call create_sim_targets_on_subdir, $(1),$(1),$(target),$(NOOP))))
+endef
+$(foreach subdir,$(TARGET_SUBDIR),$(eval $(call create_subdir_sim_targets,$(subdir))))
 
 ###############################################################################
 #                          UTILITY TARGETS
 ###############################################################################
 # Deep clean using git
 .PHONY: dev-clean
-dev-clean :
+dev-clean : $(ALL_DEV_CLEAN_TARGETS)
+	rm -rf $(INSTALL_ROOT) $(WORK_ROOT)
 	git clean -dfx --exclude=/.vscode --exclude=.lfsconfig
 
 # Using git
@@ -161,7 +218,8 @@ dev-update :
 	git submodule update --init --recursive
 
 .PHONY: clean
-clean:
+clean: $(ALL_CLEAN_TARGETS)
+	rm -rf $(INSTALL_ROOT) $(WORK_ROOT)
 	git clean -dfx --exclude=/.vscode --exclude=.lfsconfig --exclude=$(VENV_DIR)
 
 # Prep workspace
@@ -179,112 +237,79 @@ venv-freeze:
 .PHONY: prepare-tools
 prepare-tools : venv
 
+# Include not_shipped Makefile if present
+# Should be included before Toplevel Targets to get all not_shipped dependency targets.
+-include not_shipped/Makefile.mk
+
 ###############################################################################
 #                          Toplevel Targets
 ###############################################################################
+.PHONY: pre-prep
+pre-prep: $(ALL_PRE_PREP_TARGETS)
 
 .PHONY: prep
-prep: prepare-tools
+prep: $(ALL_PREP_TARGETS)
 
-.PHONY: pre-prep
-pre-prep:
+.PHONY: ip-upgrade
+ip-upgrade: $(ALL_IP_UPGRADE_TARGETS)
+
+.PHONY: generate-designs
+generate-designs: $(ALL_GENERATE_DESIGN_TARGETS)
 
 .PHONY: package-designs
-package-designs: $(addsuffix -package-designs,$(ALL_TARGET_STEM_NAMES))
+package-designs: $(ALL_PACKAGE_DESIGN_TARGETS)
 
+.PHONY: validate-readme-metadata
+validate-readme-metadata: $(ALL_VALIDATE_README_METADATA_TARGETS)
 
-###############################################################################
-#                          SW Targets
-###############################################################################
+# Build options
+.PHONY: build
+build: $(ALL_BUILD_TARGETS)
 
-# create FSBL targets
-# $(1) - Source hex file i.e. agilex5_soc_devkit_ghrd/software/hps_debug/hps_wipe.ihex
-define create_fsbl_sw_target
-$(strip $(1)):
-	cd $(dir $(strip $(1))) && ./build.sh
-endef
+# BUILD-Sw options
+.PHONY: build-sw
+build-sw: $(ALL_SW_BUILD_TARGETS)
 
-AGILEX_FSBL_IHEX := agilex_soc_devkit_ghrd/software/hps_debug/hps_debug.ihex
+# Run all tests
+.PHONY: test
+test : $(ALL_TEST_TARGETS)
 
-$(eval $(call create_fsbl_sw_target, $(AGILEX_FSBL_IHEX)))
+.PHONY: install
+install: $(ALL_INSTALL_TARGETS)
 
-###############################################################################
-#                           FSBL insertion into SOF
-###############################################################################
-# $(1) - Base directory name. i.e. agilex_soc_devkit_ghrd
-# $(2) - Target name. i.e. agf027f1es-soc-devkit-oobe-baseline. Format is <devkit>-<daughter_card>-<name>
-# $(3) - Revision name. i.e. ghrd_agfb027r24c2e2v
-# $(4) - Source hex file i.e. agilex_soc_devkit_ghrd/software/hps_debug/hps_debug.ihex
-# $(5) - target SOF basename suffix (i.e. hps_debug)
-# $(6) - Install location. i.e. $(INSTALL_ROOT)/designs
-define create_fsbl_insertion_target
+.PHONY: install-sw
+install-sw: $(ALL_SW_INSTALL_TARGETS)
 
-# Add this SW target as a dependency to the SW build target
-$(strip $(2))-sw-build : $(strip $(4))
-
-# Create the debug SOF specific SOFs using the hps_debug SW
-$(strip $(1))/output_files/$(subst -,_,$(strip $(2)))_$(subst -,_,$(strip $(5))) : $(strip $(1))/output_files/$(strip $(3)).sof $(strip $(4))
-	quartus_pfg -c -o hps_path=$(strip $(4)) $(strip $(1))/output_files/$(strip $(3)).sof $(strip $(1))/output_files/$(subst -,_,$(strip $(2)))_$(subst -,_,$(strip $(5))).sof
-
-# copy debug SOF to INSTALL_ROOT
-$(strip $(2))-$(strip $(5))-install-sof : $(strip $(1))/output_files/$(subst -,_,$(strip $(2)))_$(subst -,_,$(strip $(5))) | $(INSTALL_ROOT)
-	cp -f $(strip $(1))/output_files/$(subst -,_,$(strip $(2)))_$(subst -,_,$(strip $(5))).sof $(strip $(6))/$(subst -,_,$(strip $(2)))_$(subst -,_,$(strip $(5))).sof
-
-# Link the FSBL inserted SOF to the base SOF install recipe
-$(strip $(2))-install-sof : $(strip $(2))-$(strip $(5))-install-sof
-
-endef
-
-# Create the HPS Debug SOF
-# must first call create_fsbl_sw_target
-# Agilex 7
-$(eval $(call create_fsbl_insertion_target, agilex_soc_devkit_ghrd, agi027fc-si-devkit-oobe-baseline, ghrd_agib027r31b1e1vb, $(AGILEX_FSBL_IHEX), hps_debug, $(INSTALL_ROOT)/designs))
-$(eval $(call create_fsbl_insertion_target, agilex_soc_devkit_ghrd, agi027fd-si-devkit-oobe-baseline, ghrd_agib027r31b1e1vc, $(AGILEX_FSBL_IHEX), hps_debug, $(INSTALL_ROOT)/designs))
-$(eval $(call create_fsbl_insertion_target, agilex_soc_devkit_ghrd, agf014eb-si-devkit-oobe-baseline, ghrd_agfb014r24b2e2v, $(AGILEX_FSBL_IHEX), hps_debug, $(INSTALL_ROOT)/designs))
-$(eval $(call create_fsbl_insertion_target, agilex_soc_devkit_ghrd, agf014eb-si-devkit-nand-baseline, ghrd_agfb014r24b2e2v, $(AGILEX_FSBL_IHEX), hps_debug, $(INSTALL_ROOT)/designs))
-$(eval $(call create_fsbl_insertion_target, agilex_soc_devkit_ghrd, agf014eb-si-devkit-oobe-sgmii, ghrd_agfb014r24b2e2v, $(AGILEX_FSBL_IHEX), hps_debug, $(INSTALL_ROOT)/designs))
-$(eval $(call create_fsbl_insertion_target, agilex_soc_devkit_ghrd, agf014eb-si-devkit-oobe-pr, ghrd_agfb014r24b2e2v, $(AGILEX_FSBL_IHEX), hps_debug, $(INSTALL_ROOT)/designs))
-$(eval $(call create_fsbl_insertion_target, agilex_soc_devkit_ghrd, agm039fes-soc-devkit-oobe-baseline, ghrd_agmf039r47a1e2vr0, $(AGILEX_FSBL_IHEX), hps_debug, $(INSTALL_ROOT)/designs))
-$(eval $(call create_fsbl_insertion_target, agilex_soc_devkit_ghrd, agf023fa-soc-devkit-oobe-baseline, ghrd_agfd023r24c2e1vc, $(AGILEX_FSBL_IHEX), hps_debug, $(INSTALL_ROOT)/designs))
-$(eval $(call create_fsbl_insertion_target, agilex_soc_devkit_ghrd, agm039ea-soc-devkit-oobe-baseline, ghrd_agmf039r47a1e1vc, $(AGILEX_FSBL_IHEX), hps_debug, $(INSTALL_ROOT)/designs))
-$(eval $(call create_fsbl_insertion_target, agilex_soc_devkit_ghrd, agf014eb-si-devkit-emmc-baseline, ghrd_agfb014r24b2e2v, $(AGILEX_FSBL_IHEX), hps_debug, $(INSTALL_ROOT)/designs))
-
-###############################################################################
-#                           PR Persona RBF
-###############################################################################
-# $(1) - Base directory name. i.e. agilex_soc_devkit_ghrd
-# $(2) - Target name. i.e. agf014eb-si-devkit-oobe-pr. Format is <devkit>-<daughter_card>-<name>
-# $(3) - Revision name. i.e. ghrd_agfb014r24b2e2v, alternate_persona
-# $(4) - PR partition basename suffix i.e. pr_partition_0
-# $(5) - target persona RBF basename suffix (i.e. persona0)
-# $(6) - Install location. i.e. $(INSTALL_ROOT)/designs
-define create_install_pr_rbf_target
-$(strip $(1))/output_files/$(strip $(3)).$(strip $(4)).rbf: | $(strip $(1))/output_files
-	$(MAKE) -C $(strip $(1)) build-agf014eb-si-devkit-oobe-pr_alternate-rbf
-	cp -f $(strip $(1))/output_files/$(notdir $(subst -,/,$(strip $(3))).$(strip $(4)).rbf) $(strip $(1))/output_files/$(strip $(3)).$(strip $(4)).rbf
-
-.PHONY: $(strip $(2))-$(strip $(3))-install-pr-rbf
-$(strip $(2))-$(strip $(3))-install-pr-rbf : | $(strip $(1))/output_files/$(strip $(3)).$(strip $(4)).rbf $(strip $(6))
-	cp -f $(strip $(1))/output_files/$(strip $(3)).$(strip $(4)).rbf $(strip $(6))/$(subst -,_,$(strip $(2)))_$(strip $(5)).rbf
-
-# Link the PR inserted RBF to the base SOF install recipe
-$(strip $(2))-install-sof : $(strip $(2))-$(strip $(3))-install-pr-rbf
-
-endef
-
-# Create install PR RBF target
-$(eval $(call create_install_pr_rbf_target, agilex_soc_devkit_ghrd, agf014eb-si-devkit-oobe-pr, agf014eb-si-devkit-oobe-pr-ghrd_agfb014r24b2e2v, pr_partition_0, persona0, $(INSTALL_ROOT)/designs))
-$(eval $(call create_install_pr_rbf_target, agilex_soc_devkit_ghrd, agf014eb-si-devkit-oobe-pr, agf014eb-si-devkit-oobe-pr-alternate_persona, pr_partition_0, persona1, $(INSTALL_ROOT)/designs))
-
-# Include not_shipped Makefile if present
--include not_shipped/Makefile.mk
+.PHONY: all
+all: $(ALL_TARGET_ALL_NAMES)
 
 ###############################################################################
 #                                HELP
 ###############################################################################
+.PHONY: print-env
+print-env:
+	$(MAKE) print-env-int
+
+.PHONY: print-env-int
+print-env-int:
+	$(info GHRD Build Environment)
+	$(info ----------------)
+	$(info PATH=$(PATH))
+	$(info LD_LIBRARY_PATH=$(LD_LIBRARY_PATH))
+	$(info QUARTUS_ROOTDIR=$(QUARTUS_ROOTDIR))
+	$(info Quartus Version=$(shell quartus_sh -v | grep Version))
+	$(info GCC=$(shell which gcc))
+
 .PHONY: help
 help:
 	$(info GHRD Build)
 	$(info ----------------)
-	$(info ALL Targets         : $(ALL_TARGET_ALL_NAMES))
-	$(info Stem names          : $(ALL_TARGET_STEM_NAMES))
+	$(info    all         : Run and "all" target on each of the target designs)
+	$(info ----------------)
+	$(info    All Targets              : $(ALL_TARGET_ALL_NAMES))
+	$(info    Stem names               : $(ALL_TARGET_STEM_NAMES))
+	$(info    Package Targets          : $(ALL_PACKAGE_DESIGN_TARGETS))
+	$(info    Build Targets            : $(ALL_BUILD_TARGETS))
+	$(info    Test Targets             : $(ALL_TEST_TARGETS))
+	$(info    Software Build Targets   : $(ALL_SW_BUILD_TARGETS))
+	$(info    Software Install Targets : $(ALL_SW_INSTALL_TARGETS))

@@ -1,0 +1,19 @@
+::drc::add_waiver \
+	-description {Permanent Waiver: Asynchronous reset from fpga_reset_n into the system reset synchronizer chain is an unconstrained external reset source by design. The synchronizer chain brings this reset into MAIN_CLOCK safely.} \
+	-rule_id {RES-50003} \
+	-query_string {"Unconstrained Chain Registers" =~ 'sys_rst_inst|altera_reset_synchronizer_int_chain' && "Leading Reset Source" =~ 'fpga_reset_n' && "Reset Chain Head" =~ 'sys_rst_inst|altera_reset_synchronizer_int_chain' && "From Clock" =~ 'Unconstrained domain' && "To Clock" =~ 'MAIN_CLOCK' && Reason == 'Asynchronous transfer'} \
+	-stages {{Timing Signoff}} \
+	-tag {} \
+	-timestamp {2025-01-28*15:31:13} \
+	-owner {user} \
+	-no_warn
+
+::drc::add_waiver \
+	-description {Permanent Waiver: Multiple asynchronous reset synchronizers in MAIN_CLOCK are expected in this design (system reset, JTAG Avalon masters, and fabric/SDM reset sources). These domains are intentionally synchronized to the same clock and do not indicate a functional reset hazard for this reference design.} \
+	-rule_id {RDC-50003} \
+	-query_string {"Reset Clock Domain" =~ 'MAIN_CLOCK' && "Reset Chain Register Heads" =~ 'sys_rst_inst|altera_reset_synchronizer_int_chain' && "Reset Sources" =~ 'auto_fab_0|alt_sld_fab_0'} \
+	-stages {{Timing Signoff}} \
+	-tag {} \
+	-timestamp {2025-02-20*17:36:55} \
+	-owner {user} \
+	-no_warn
