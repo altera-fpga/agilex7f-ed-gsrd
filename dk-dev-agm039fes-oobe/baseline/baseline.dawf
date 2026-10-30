@@ -1,0 +1,19 @@
+::drc::add_waiver \
+	-description {Permanent Waiver: Multiple asynchronous reset synchronizers in MAIN_CLOCK are expected in this design (system reset, JTAG Avalon masters, and fabric/SDM reset sources). These domains are intentionally synchronized to the same clock and do not indicate a functional reset hazard for this reference design.} \
+	-rule_id {RDC-50003} \
+	-query_string {"Reset Clock Domain" =~ 'MAIN_CLOCK' && "Reset Chain Register Heads" =~ 'sys_rst_inst|altera_reset_synchronizer_int_chain' && "Reset Sources" =~ 'auto_fab_0|alt_sld_fab_0'} \
+	-stages {{Timing Signoff}} \
+	-tag {} \
+	-timestamp {2025-02-20*17:36:55} \
+	-owner {user} \
+	-no_warn
+
+::drc::add_waiver \
+	-description {Permanent Waiver: User reset clock-gate IP SDC set_clock_groups on internal_clk is invalid for this design configuration because it covers no paths. This unused IP-generated constraint does not affect timing correctness.} \
+	-rule_id {TMC-20025} \
+	-query_string {Reason == 'Exception is invalid (covers no paths)' && Location =~ 'altera_s10_user_rst_clkgate_fm.sdc'} \
+	-stages {{Timing Signoff}} \
+	-tag {} \
+	-timestamp {2026-08-05*11:00:00} \
+	-owner {user} \
+	-no_warn

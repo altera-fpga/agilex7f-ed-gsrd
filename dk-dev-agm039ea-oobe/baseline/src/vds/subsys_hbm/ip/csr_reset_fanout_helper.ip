@@ -1,0 +1,4145 @@
+<?xml version="1.0" ?>
+<!--Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and any partner logic
+functions, and any output files from any of the foregoing
+(including device programming or simulation files), and any
+associated documentation or information are expressly subject
+to the terms and conditions of the Altera Program License
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Altera and sold by Altera or its authorized distributors.-->
+<ipxact:component xmlns:ipxact="http://www.accellera.org/XMLSchema/IPXACT/1685-2014" xmlns:altera="http://www.altera.com/XMLSchema/IPXact2014/extensions">
+  <ipxact:vendor>AUTHOR</ipxact:vendor>
+  <ipxact:library>csr_reset_fanout_helper</ipxact:library>
+  <ipxact:name>intel_mem_ip_reset_fanout_helper_inst</ipxact:name>
+  <ipxact:version>1.1.0</ipxact:version>
+  <ipxact:busInterfaces>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_0</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_0</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_1</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_1</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_2</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_2</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_3</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_3</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_4</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_4</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_5</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_5</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_6</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_6</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_7</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_7</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_8</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_8</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_9</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_9</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_10</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_10</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_11</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_11</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_12</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_12</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_13</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_13</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_14</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_14</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_15</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_15</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_16</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_16</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_17</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_17</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_18</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_18</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_19</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_19</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_20</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_20</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_21</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_21</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_22</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_22</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_23</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_23</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_24</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_24</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_25</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_25</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_26</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_26</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_27</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_27</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_28</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_28</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_29</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_29</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_30</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_30</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_31</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_31</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_32</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_32</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_33</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_33</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_34</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_34</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_35</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_35</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_36</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_36</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_37</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_37</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_38</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_38</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_out_39</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_out_39</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:master></ipxact:master>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedDirectReset" type="string">
+          <ipxact:name>associatedDirectReset</ipxact:name>
+          <ipxact:displayName>Associated direct reset</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="associatedResetSinks" type="string">
+          <ipxact:name>associatedResetSinks</ipxact:name>
+          <ipxact:displayName>Associated reset sinks</ipxact:displayName>
+          <ipxact:value>sresetn_in</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>clk</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="clock" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="clock" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>clk</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>clk</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:slave></ipxact:slave>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="clockRate" type="longint">
+          <ipxact:name>clockRate</ipxact:name>
+          <ipxact:displayName>Clock rate</ipxact:displayName>
+          <ipxact:value>0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="externallyDriven" type="bit">
+          <ipxact:name>externallyDriven</ipxact:name>
+          <ipxact:displayName>Externally driven</ipxact:displayName>
+          <ipxact:value>false</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="ptfSchematicName" type="string">
+          <ipxact:name>ptfSchematicName</ipxact:name>
+          <ipxact:displayName>PTF schematic name</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+    <ipxact:busInterface>
+      <ipxact:name>sresetn_in</ipxact:name>
+      <ipxact:busType vendor="intel" library="intel" name="reset" version="26.3"></ipxact:busType>
+      <ipxact:abstractionTypes>
+        <ipxact:abstractionType>
+          <ipxact:abstractionRef vendor="intel" library="intel" name="reset" version="26.3"></ipxact:abstractionRef>
+          <ipxact:portMaps>
+            <ipxact:portMap>
+              <ipxact:logicalPort>
+                <ipxact:name>reset_n</ipxact:name>
+              </ipxact:logicalPort>
+              <ipxact:physicalPort>
+                <ipxact:name>sresetn_in</ipxact:name>
+              </ipxact:physicalPort>
+            </ipxact:portMap>
+          </ipxact:portMaps>
+        </ipxact:abstractionType>
+      </ipxact:abstractionTypes>
+      <ipxact:slave></ipxact:slave>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="associatedClock" type="string">
+          <ipxact:name>associatedClock</ipxact:name>
+          <ipxact:displayName>Associated clock</ipxact:displayName>
+          <ipxact:value>clk</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="synchronousEdges" type="string">
+          <ipxact:name>synchronousEdges</ipxact:name>
+          <ipxact:displayName>Synchronous edges</ipxact:displayName>
+          <ipxact:value>BOTH</ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </ipxact:busInterface>
+  </ipxact:busInterfaces>
+  <ipxact:model>
+    <ipxact:views>
+      <ipxact:view>
+        <ipxact:name>QUARTUS_SYNTH</ipxact:name>
+        <ipxact:envIdentifier>:quartus.altera.com:</ipxact:envIdentifier>
+        <ipxact:componentInstantiationRef>QUARTUS_SYNTH</ipxact:componentInstantiationRef>
+      </ipxact:view>
+    </ipxact:views>
+    <ipxact:instantiations>
+      <ipxact:componentInstantiation>
+        <ipxact:name>QUARTUS_SYNTH</ipxact:name>
+        <ipxact:moduleName>intel_mem_ip_reset_fanout_helper</ipxact:moduleName>
+        <ipxact:fileSetRef>
+          <ipxact:localName>QUARTUS_SYNTH</ipxact:localName>
+        </ipxact:fileSetRef>
+        <ipxact:parameters></ipxact:parameters>
+      </ipxact:componentInstantiation>
+    </ipxact:instantiations>
+    <ipxact:ports>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_0</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_1</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_2</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_3</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_4</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_5</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_6</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_7</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_8</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_9</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_10</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_11</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_12</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_13</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_14</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_15</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_16</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_17</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_18</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_19</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_20</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_21</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_22</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_23</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_24</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_25</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_26</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_27</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_28</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_29</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_30</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_31</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_32</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_33</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_34</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_35</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_36</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_37</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_38</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_out_39</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>out</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>clk</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>in</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+      <ipxact:port>
+        <ipxact:name>sresetn_in</ipxact:name>
+        <ipxact:wire>
+          <ipxact:direction>in</ipxact:direction>
+          <ipxact:vectors></ipxact:vectors>
+          <ipxact:wireTypeDefs>
+            <ipxact:wireTypeDef>
+              <ipxact:typeName>STD_LOGIC</ipxact:typeName>
+              <ipxact:viewRef>QUARTUS_SYNTH</ipxact:viewRef>
+            </ipxact:wireTypeDef>
+          </ipxact:wireTypeDefs>
+        </ipxact:wire>
+      </ipxact:port>
+    </ipxact:ports>
+  </ipxact:model>
+  <ipxact:vendorExtensions>
+    <altera:entity_info>
+      <ipxact:vendor>AUTHOR</ipxact:vendor>
+      <ipxact:library>csr_reset_fanout_helper</ipxact:library>
+      <ipxact:name>intel_mem_ip_reset_fanout_helper</ipxact:name>
+      <ipxact:version>1.1.0</ipxact:version>
+    </altera:entity_info>
+    <altera:altera_module_parameters>
+      <ipxact:parameters></ipxact:parameters>
+    </altera:altera_module_parameters>
+    <altera:altera_system_parameters>
+      <ipxact:parameters>
+        <ipxact:parameter parameterId="board" type="string">
+          <ipxact:name>board</ipxact:name>
+          <ipxact:displayName>Board</ipxact:displayName>
+          <ipxact:value>default</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="device" type="string">
+          <ipxact:name>device</ipxact:name>
+          <ipxact:displayName>Device</ipxact:displayName>
+          <ipxact:value>AGMF039R47A1E1VC</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="deviceFamily" type="string">
+          <ipxact:name>deviceFamily</ipxact:name>
+          <ipxact:displayName>Device family</ipxact:displayName>
+          <ipxact:value>Agilex 7</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="deviceSpeedGrade" type="string">
+          <ipxact:name>deviceSpeedGrade</ipxact:name>
+          <ipxact:displayName>Device Speed Grade</ipxact:displayName>
+          <ipxact:value>1</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="generationId" type="int">
+          <ipxact:name>generationId</ipxact:name>
+          <ipxact:displayName>Generation Id</ipxact:displayName>
+          <ipxact:value>0</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="bonusData" type="string">
+          <ipxact:name>bonusData</ipxact:name>
+          <ipxact:displayName>bonusData</ipxact:displayName>
+          <ipxact:value>bonusData 
+{
+   element $system
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Agilex 7";
+         type = "String";
+      }
+   }
+   element intel_mem_ip_reset_fanout_helper_inst
+   {
+      datum _sortIndex
+      {
+         value = "0";
+         type = "int";
+      }
+   }
+}
+</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="hideFromIPCatalog" type="bit">
+          <ipxact:name>hideFromIPCatalog</ipxact:name>
+          <ipxact:displayName>Hide from IP Catalog</ipxact:displayName>
+          <ipxact:value>false</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="lockedInterfaceDefinition" type="string">
+          <ipxact:name>lockedInterfaceDefinition</ipxact:name>
+          <ipxact:displayName>lockedInterfaceDefinition</ipxact:displayName>
+          <ipxact:value>&lt;boundaryDefinition&gt;
+    &lt;interfaces&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_0&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_0&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_1&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_1&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_2&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_2&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_3&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_3&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_4&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_4&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_5&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_5&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_6&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_6&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_7&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_7&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_8&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_8&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_9&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_9&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_10&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_10&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_11&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_11&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_12&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_12&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_13&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_13&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_14&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_14&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_15&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_15&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_16&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_16&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_17&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_17&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_18&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_18&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_19&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_19&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_20&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_20&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_21&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_21&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_22&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_22&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_23&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_23&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_24&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_24&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_25&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_25&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_26&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_26&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_27&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_27&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_28&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_28&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_29&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_29&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_30&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_30&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_31&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_31&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_32&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_32&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_33&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_33&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_34&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_34&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_35&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_35&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_36&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_36&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_37&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_37&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_38&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_38&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_out_39&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;true&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_out_39&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Output&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedDirectReset&lt;/key&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedResetSinks&lt;/key&gt;
+                        &lt;value&gt;sresetn_in&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;clk&lt;/name&gt;
+            &lt;type&gt;clock&lt;/type&gt;
+            &lt;isStart&gt;false&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;clk&lt;/name&gt;
+                    &lt;role&gt;clk&lt;/role&gt;
+                    &lt;direction&gt;Input&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;clockRate&lt;/key&gt;
+                        &lt;value&gt;0&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;externallyDriven&lt;/key&gt;
+                        &lt;value&gt;false&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;ptfSchematicName&lt;/key&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+        &lt;interface&gt;
+            &lt;name&gt;sresetn_in&lt;/name&gt;
+            &lt;type&gt;reset&lt;/type&gt;
+            &lt;isStart&gt;false&lt;/isStart&gt;
+            &lt;ports&gt;
+                &lt;port&gt;
+                    &lt;name&gt;sresetn_in&lt;/name&gt;
+                    &lt;role&gt;reset_n&lt;/role&gt;
+                    &lt;direction&gt;Input&lt;/direction&gt;
+                    &lt;width&gt;1&lt;/width&gt;
+                    &lt;lowerBound&gt;0&lt;/lowerBound&gt;
+                    &lt;vhdlType&gt;STD_LOGIC&lt;/vhdlType&gt;
+                    &lt;terminationValue&gt;0&lt;/terminationValue&gt;
+                &lt;/port&gt;
+            &lt;/ports&gt;
+            &lt;assignments&gt;
+                &lt;assignmentValueMap/&gt;
+            &lt;/assignments&gt;
+            &lt;parameters&gt;
+                &lt;parameterValueMap&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;associatedClock&lt;/key&gt;
+                        &lt;value&gt;clk&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
+                        &lt;key&gt;synchronousEdges&lt;/key&gt;
+                        &lt;value&gt;BOTH&lt;/value&gt;
+                    &lt;/entry&gt;
+                &lt;/parameterValueMap&gt;
+            &lt;/parameters&gt;
+        &lt;/interface&gt;
+    &lt;/interfaces&gt;
+&lt;/boundaryDefinition&gt;</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="systemInfos" type="string">
+          <ipxact:name>systemInfos</ipxact:name>
+          <ipxact:displayName>systemInfos</ipxact:displayName>
+          <ipxact:value>&lt;systemInfosDefinition&gt;
+    &lt;connPtSystemInfos/&gt;
+&lt;/systemInfosDefinition&gt;</ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="dflBitArray" type="string">
+          <ipxact:name>dflBitArray</ipxact:name>
+          <ipxact:displayName>dflBitArray</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+        <ipxact:parameter parameterId="cpuInfo" type="string">
+          <ipxact:name>cpuInfo</ipxact:name>
+          <ipxact:displayName>cpuInfo</ipxact:displayName>
+          <ipxact:value></ipxact:value>
+        </ipxact:parameter>
+      </ipxact:parameters>
+    </altera:altera_system_parameters>
+    <altera:altera_interface_boundary>
+      <altera:interface_mapping altera:name="clk" altera:internal="intel_mem_ip_reset_fanout_helper_inst.clk" altera:type="clock" altera:dir="end">
+        <altera:port_mapping altera:name="clk" altera:internal="clk"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_in" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_in" altera:type="reset" altera:dir="end">
+        <altera:port_mapping altera:name="sresetn_in" altera:internal="sresetn_in"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_0" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_0" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_0" altera:internal="sresetn_out_0"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_10" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_10" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_10" altera:internal="sresetn_out_10"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_11" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_11" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_11" altera:internal="sresetn_out_11"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_12" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_12" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_12" altera:internal="sresetn_out_12"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_13" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_13" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_13" altera:internal="sresetn_out_13"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_14" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_14" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_14" altera:internal="sresetn_out_14"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_15" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_15" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_15" altera:internal="sresetn_out_15"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_16" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_16" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_16" altera:internal="sresetn_out_16"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_17" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_17" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_17" altera:internal="sresetn_out_17"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_18" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_18" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_18" altera:internal="sresetn_out_18"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_19" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_19" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_19" altera:internal="sresetn_out_19"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_1" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_1" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_1" altera:internal="sresetn_out_1"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_20" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_20" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_20" altera:internal="sresetn_out_20"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_21" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_21" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_21" altera:internal="sresetn_out_21"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_22" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_22" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_22" altera:internal="sresetn_out_22"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_23" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_23" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_23" altera:internal="sresetn_out_23"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_24" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_24" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_24" altera:internal="sresetn_out_24"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_25" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_25" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_25" altera:internal="sresetn_out_25"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_26" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_26" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_26" altera:internal="sresetn_out_26"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_27" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_27" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_27" altera:internal="sresetn_out_27"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_28" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_28" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_28" altera:internal="sresetn_out_28"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_29" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_29" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_29" altera:internal="sresetn_out_29"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_2" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_2" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_2" altera:internal="sresetn_out_2"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_30" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_30" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_30" altera:internal="sresetn_out_30"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_31" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_31" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_31" altera:internal="sresetn_out_31"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_32" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_32" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_32" altera:internal="sresetn_out_32"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_33" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_33" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_33" altera:internal="sresetn_out_33"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_34" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_34" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_34" altera:internal="sresetn_out_34"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_35" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_35" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_35" altera:internal="sresetn_out_35"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_36" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_36" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_36" altera:internal="sresetn_out_36"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_37" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_37" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_37" altera:internal="sresetn_out_37"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_38" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_38" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_38" altera:internal="sresetn_out_38"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_39" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_39" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_39" altera:internal="sresetn_out_39"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_3" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_3" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_3" altera:internal="sresetn_out_3"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_4" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_4" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_4" altera:internal="sresetn_out_4"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_5" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_5" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_5" altera:internal="sresetn_out_5"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_6" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_6" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_6" altera:internal="sresetn_out_6"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_7" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_7" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_7" altera:internal="sresetn_out_7"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_8" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_8" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_8" altera:internal="sresetn_out_8"></altera:port_mapping>
+      </altera:interface_mapping>
+      <altera:interface_mapping altera:name="sresetn_out_9" altera:internal="intel_mem_ip_reset_fanout_helper_inst.sresetn_out_9" altera:type="reset" altera:dir="start">
+        <altera:port_mapping altera:name="sresetn_out_9" altera:internal="sresetn_out_9"></altera:port_mapping>
+      </altera:interface_mapping>
+    </altera:altera_interface_boundary>
+    <altera:altera_has_warnings>false</altera:altera_has_warnings>
+    <altera:altera_has_errors>false</altera:altera_has_errors>
+  </ipxact:vendorExtensions>
+</ipxact:component>

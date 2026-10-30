@@ -1,0 +1,10 @@
+header:
+  version: 17
+
+local_conf_header:
+  machine: |
+    MACHINE = "agilex7"
+    LINUX_DTS_FILE = "socfpga_agilex_socdk_emmc.dts"
+    CUSTOM_LINUX_DTS_FILE = "baseline.dts"
+    UBOOT_DEFCONFIG = "socfpga_agilex_emmc_defconfig"
+    UBOOT_DEVICE_TREE = "socfpga_agilex_socdk_emmc.dtb"
